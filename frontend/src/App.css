@@ -1,0 +1,36 @@
+body {
+  background-color: rgba(240, 240, 240, 0.5);
+}
+
+.container {
+  display: grid;
+  grid-template-areas:
+    "top-bar  top-bar"
+    "courosel courosel"
+    "content  ads"
+    "footer   footer";
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px; 
+}
+
+.top-bar {
+  grid-area: top-bar;
+  background: red;
+}
+
+.courosel {
+  grid-area: courosel;
+}
+
+.content {
+  grid-area: content;
+}
+
+.ads {
+  grid-area: ads;
+}
+
+.footer {
+  grid-area: footer;
+}
