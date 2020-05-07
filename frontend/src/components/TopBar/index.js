@@ -1,26 +1,24 @@
 import React from "react";
+import { IconContext } from "react-icons";
+import { FaShoppingCart } from "react-icons/fa";
+import { BsReverseLayoutTextSidebarReverse } from "react-icons/bs"
+import { AiOutlineLogin } from "react-icons/ai";
 import "./index.css";
-
-// SideBar Logo SearchBar Cart
-
-/*
-poss
-font awesome
-react materialize
-material ui
-bootstrap
-*/
-
-function Ps() {
-	return Array.from({ length: 5 }, (value, key) => 
-		<p>button{key+1}</p>
-	)
-}
 
 export default function TopBar() {
 	return (
 		<div className="top-bar-contents">
-			<Ps />
+			<IconContext.Provider value={{ color: "white", size: "40px" }}>
+				<BsReverseLayoutTextSidebarReverse />
+			</IconContext.Provider>
+			<p id="logo">CompanyLogo</p>
+			<input id="input-search" type="text" placeholder="e.g. T-Shirt Male"></input>
+			<IconContext.Provider value={{ color: "white", size: "40px" }}>
+				<AiOutlineLogin />
+			</IconContext.Provider>
+			<IconContext.Provider value={{ color: "white", size: "40px" }}>
+				<FaShoppingCart />
+			</IconContext.Provider>
 		</div>
 	);
 }

@@ -16,7 +16,9 @@ body {
 
 .top-bar {
   grid-area: top-bar;
-  background: red;
+  background-color: rgba(25, 25, 25, 1);
+  border-radius: 20px;
+  border: 1px solid black;
 }
 
 .courosel {
