@@ -6,15 +6,11 @@
 	padding: 1px;
 }
 
-#logo {
+#company-logo {
 	color: white;
 	font-size: 20px;
 }
 
-input {
-  -webkit-appearance: none; 
-  appearance: none;
-}
 
 #input-search {
 	border-radius: 20px;
@@ -23,4 +19,14 @@ input {
 	width: 275px;
 	height: 25px;
 	background-color: rgba(235, 235, 235, 1);
+}
+
+.sidebar-icon, .login-icon, .cart-icon {
+	color: white;
+	font-size: 40px;
+}
+
+.icon {
+	color: blue;
+	font-size: 40px;
 }
