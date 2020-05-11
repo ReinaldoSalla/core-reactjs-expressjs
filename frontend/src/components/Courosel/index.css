@@ -1,0 +1,20 @@
+.first-img {
+	transition-duration: var(--transition-time);
+	background-image: url('https://preview.ibb.co/j8nRCQ/fashion2.jpg');
+	height: 250px;
+	width: 500px;
+}
+
+.second-img {
+	transition-duration: var(--transition-time);
+	background: url('https://preview.ibb.co/fm4Cmk/fashion3.jpg');
+	height: 250px;
+	width: 500px;
+}
+
+.third-img {
+	transition-duration: var(--transition-time);
+	background: url('https://preview.ibb.co/bMsCK5/fashion5.jpg');
+	height: 250px;
+	width: 500px;
+}

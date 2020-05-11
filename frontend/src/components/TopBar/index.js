@@ -1,54 +1,36 @@
 import React from "react";
-import { IconContext } from "react-icons";
 import { FaShoppingCart } from "react-icons/fa";
-import { BsReverseLayoutTextSidebarReverse } from "react-icons/bs"
+import { BsLayoutTextSidebar } from "react-icons/bs"
 import { AiOutlineLogin } from "react-icons/ai";
+import SidebarContext from "../../context/SidebarContext/";
 import "./index.css";
-
-function SidebarIcon() {
-	return (
-		<IconContext.Provider value={{ className: "sidebar-icon" }}>
-			<BsReverseLayoutTextSidebarReverse />
-		</IconContext.Provider>
-	);
-}
 
 function CompanyLogo() {
 	return (
-		<p id="company-logo">CompanyLogo</p>
-	)
+		<span className="company-logo">CompanyLogo</span>
+	);
 }
 
 function InputSearch() {
 	return (
-		<input id="input-search" type="text" placeholder="e.g. T-Shirt Male"/>
-	);
-}
-
-function LoginIcon() {
-	return (
-		<IconContext.Provider value={{ className: "login-icon" }}>
-			<AiOutlineLogin />
-		</IconContext.Provider>
-	);
-}
-
-function CartIcon() {
-	return (
-		<IconContext.Provider value={{ className: "cart-icon" }}>
-			<FaShoppingCart />
-		</IconContext.Provider>
+		<input className="input-search" type="text" placeholder="e.g. T-Shirt Male"/>
 	);
 }
 
 export default function Topbar() {
+	const { onOff, toggleSidebar } = React.useContext(SidebarContext);
 	return (
-		<div className="top-bar-contents">
-			<SidebarIcon />
-			<CompanyLogo />
-			<InputSearch />
-			<LoginIcon />
-			<CartIcon />
-		</div>
+		<React.Fragment>
+			<div className="topbar-grid">
+				<BsLayoutTextSidebar 
+					className={`sidebar-icon-${onOff}`} 
+					onClick={toggleSidebar}
+				/>
+				<CompanyLogo />
+				<InputSearch />
+				<AiOutlineLogin className="login-icon" />
+				<FaShoppingCart className="cart-icon" />
+			</div>
+		</React.Fragment>
 	);
 }
