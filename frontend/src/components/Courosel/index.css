@@ -1,20 +1,94 @@
-.first-img {
-	transition-duration: var(--transition-time);
-	background-image: url('https://preview.ibb.co/j8nRCQ/fashion2.jpg');
-	height: 250px;
-	width: 500px;
+.slidershow {
+	width: 700px;
+	height: 400px;
+	overflow: hidden;
 }
 
-.second-img {
-	transition-duration: var(--transition-time);
-	background: url('https://preview.ibb.co/fm4Cmk/fashion3.jpg');
-	height: 250px;
-	width: 500px;
+.middle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
-.third-img {
-	transition-duration: var(--transition-time);
-	background: url('https://preview.ibb.co/bMsCK5/fashion5.jpg');
-	height: 250px;
-	width: 500px;
+.slides {
+	width: 500%;
+	height: 100%;
+	display: flex;
+}
+
+
+input[name="r"] {
+	position: absolute;
+	visibility: hidden;
+}
+
+.slide {
+	width: 20%;
+	transition-duration: 1000ms;
+}
+
+.slide > img {
+	width: 100%;
+	height: 100%;
+}
+
+.navigation {
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+}
+
+.bar {
+	width: 50px;
+	height: 10px;
+	border: 2px solid #fff;
+	margin: 6px;
+	cursor: pointer;
+}
+
+.bar:hover {
+	background: #fff;
+}
+
+.first-img > .slides > #r1 ~ .s1 {
+	margin-left: 0%;
+}
+
+.second-img > .slides > #r2 ~ .s1 {
+	margin-left: -20%;
+}
+
+.third-img > .slides > #r3 ~ .s1 {
+	margin-left: -40%;
+}
+
+.forth-img > .slides > #r4 ~ .s1 {
+	margin-left: -60%;
+}
+
+.fifth-img > .slides > #r5 ~ .s1 {
+	margin-left: -80%;
+}
+
+.first-img > .slides > #r1:hover ~ .s1 {
+	margin-left: 0%;
+}
+
+#r2:hover ~ .s1 {
+	margin-left: -20%;
+}
+
+#r3:hover ~ .s1 {
+	margin-left: -40%;
+}
+
+#r4:hover ~ .s1 {
+	margin-left: -60%;
+}
+
+#r5:hover ~ .s1 {
+	margin-left: -80%;
 }
