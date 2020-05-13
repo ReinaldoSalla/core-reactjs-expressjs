@@ -36,40 +36,17 @@ function directionReducer(state, action) {
 function countReducer(state, action) {
 	switch(action.type) {
 		case "increment":
-			return { count: state.count + 1 };
+			return { count: state.count + 1 
+			};
 		case "decrement":
-			return { count: state.count - 1};
-		case "move-to-first": 
-			return { count: 0 };
-		case "move-to-second":
-			return { count: 1 };
-		case "move-to-third":
-			return { count: 2 };
-		case "move-to-forth":
-			return { count: 3 };
-		case "move-to-fifth":
-			return { count: 4 }
+			return { 
+				count: state.count - 1
+			};
 		default:
 			return state;
 	}
 }
 
-function reducerLabels(state, action) {
-	switch (action.type) {
-		case "highlight-first":
-			return { labels: ["on", "off", "off", "off", "off"] };
-		case "highlight-second":
-			return { labels: ["off", "on", "off", "off", "off" ]};
-		case "highlight-third":
-			return { labels: ["off", "off", "on", "off", "off" ]};
-		case "highlight-forth":
-			return { labels: ["off", "off", "off", "on", "off" ]};
-		case "highlight-fifth":
-			return { labels: ["off", "off", "off", "off", "on" ]};
-		default:
-			return state; 
-	}
-}
 
 export default function App() {
 	const [countState, countDispatch] = React.useReducer(countReducer, { 
@@ -79,10 +56,6 @@ export default function App() {
 		direction: true
 	});
 	const [firstRound, setFirstRound] = React.useState(true);
-	const [stateLabels, dispatchLabels] = React.useReducer(reducerLabels, {
-		labels: ["on", "off", "off", "off", "off"]
-	});
-	const index = countState.count % slides.length;
 
 	React.useEffect(() => {
 		const intervalId = setInterval(() => {
@@ -90,25 +63,6 @@ export default function App() {
 				countDispatch({ type: "increment" });
 			} else {
 				countDispatch({ type: "decrement" });
-			}
-			switch (index) {
-				case 0:
-					dispatchLabels({ type: "highlight-first" });
-					break;
-				case 1:
-					dispatchLabels({ type: "highlight-second" });
-					break;
-				case 2:
-					dispatchLabels({ type: "highlight-third" });
-					break;
-				case 3:
-					dispatchLabels({ type: "highlight-forth" });
-					break;
-				case 4:
-					dispatchLabels({ type: "highlight-fifth" });
-					break;
-				default:
-					throw new Error("Labels must be [0 ... 4");	
 			}
 		}, 2000);
 		return () => clearInterval(intervalId);
@@ -135,31 +89,31 @@ export default function App() {
 						type="radio" 
 						name="r" 
 						id="r1" 
-						onClick={() => countDispatch({ type: "move-to-first" })}
+						//onClick={() => setCount(0)}
 					/>
 					<input 
 						type="radio" 
 						name="r" 
 						id="r2" 
-						onClick={() => countDispatch({ type: "move-to-second" })}
+						//onClick={() => setCount(1)}
 					/>
 					<input 
 						type="radio" 
 						name="r" 
 						id="r3" 
-						onClick={() => countDispatch({ type: "move-to-third" })}
+						//onClick={() => setCount(2)}
 					/>
 					<input 
 						type="radio" 
 						name="r" 
 						id="r4" 
-						onClick={() => countDispatch({ type: "move-to-forth" })}
+						//onClick={() => setCount(3)}
 					/>
 					<input 
 						type="radio" 
 						name="r" 
 						id="r5" 
-						onClick={() => countDispatch({ type: "move-to-fifth" })}
+						//onClick={() => setCount(4)}
 					/>
 					<div className="slide s1">
 						<img src={slides[0].imgUrl} alt=""/>
@@ -180,31 +134,31 @@ export default function App() {
 						<label 
 							htmlFor="r1" 
 							className="bar"
-							id={`first-label-${stateLabels.labels[0]}`}
+							id={`first-label-on`}
 						>
 						</label>
 						<label 
 							htmlFor="r2" 
 							className="bar"
-							id={`second-label-${stateLabels.labels[1]}`}
+							id={`second-label-off`}
 						>
 						</label>
 						<label 
 							htmlFor="r3" 
 							className="bar"
-							id={`third-label-off-${stateLabels.labels[2]}`}
+							id={`third-label-off`}
 						>
 						</label>
 						<label 
 							htmlFor="r4" 
 							className="bar"
-							id={`forth-label-off-${stateLabels.labels[3]}`}
+							id={`forth-label-off`}
 						>
 						</label>
 						<label 
 							htmlFor="r5" 
 							className="bar"
-							id={`fifth-label-${stateLabels.labels[4]}`}
+							id={`fifth-label-off`}
 						>
 						</label>
 					</div>
