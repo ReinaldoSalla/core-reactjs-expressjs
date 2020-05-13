@@ -17,7 +17,6 @@
 	display: flex;
 }
 
-
 input[name="r"] {
 	position: absolute;
 	visibility: hidden;
@@ -44,13 +43,38 @@ input[name="r"] {
 .bar {
 	width: 50px;
 	height: 10px;
-	border: 2px solid #fff;
+	border: 2px solid white;
 	margin: 6px;
 	cursor: pointer;
 }
 
 .bar:hover {
-	background: #fff;
+	background: white;
+}
+
+#first-label-on {
+	background-color: white;
+	transition-duration: 1000ms;
+}
+
+#second-label-on {
+	background-color: white;
+	transition-duration: 1000ms;
+}
+
+#third-label-on {
+	background-color: white;
+	transition-duration: 1000ms;
+}
+
+#forth-label-on {
+	background-color: white;
+	transition-duration: 1000ms;
+}
+
+#fifth-label-on {
+	background-color: white;
+	transition-duration: 1000ms;
 }
 
 .first-img > .slides > #r1 ~ .s1 {
@@ -70,25 +94,5 @@ input[name="r"] {
 }
 
 .fifth-img > .slides > #r5 ~ .s1 {
-	margin-left: -80%;
-}
-
-.first-img > .slides > #r1:hover ~ .s1 {
-	margin-left: 0%;
-}
-
-#r2:hover ~ .s1 {
-	margin-left: -20%;
-}
-
-#r3:hover ~ .s1 {
-	margin-left: -40%;
-}
-
-#r4:hover ~ .s1 {
-	margin-left: -60%;
-}
-
-#r5:hover ~ .s1 {
 	margin-left: -80%;
 }
