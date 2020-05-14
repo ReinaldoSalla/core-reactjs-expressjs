@@ -1,14 +1,19 @@
-import React from "react";
+import React from "react"
+/*;
 import Topbar from "./components/Topbar/";
 import Sidebar from "./components/Sidebar";
 import SidebarProvider from "./context/SidebarProvider/";
+*/
 import Courosel from "./components/Courosel";
-import "./App.css"
+//import "./App.css"
 
+/*
 function Todo(props) {
 	return <span>todo {props.name}</span>
 }
+*/
 
+/*
 export default function App() {
   return (
   	<SidebarProvider>
@@ -34,4 +39,11 @@ export default function App() {
 	    </div>
 	  </SidebarProvider>
   );
+}
+*/
+
+export default function App() {
+	return (
+		<Courosel />
+	);
 }

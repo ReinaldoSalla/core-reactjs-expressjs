@@ -6,6 +6,7 @@ body {
   background-color: rgba(240, 240, 240, 0.5);
 }
 
+/*
 .app-grid {
   display: grid;
   grid-template-areas:
@@ -17,6 +18,7 @@ body {
   grid-template-rows: auto;
   grid-gap: 20px; 
 }
+*/
 
 .topbar {
   grid-area: topbar;

@@ -1,10 +1,7 @@
-.slidershow {
+.slider {
 	width: 700px;
 	height: 400px;
 	overflow: hidden;
-}
-
-.middle {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -13,11 +10,10 @@
 
 .slides {
 	width: 500%;
-	height: 100%;
 	display: flex;
 }
 
-input[name="r"] {
+#first-input, #second-input, #third-input, #forth-input, #fifth-input {
 	position: absolute;
 	visibility: hidden;
 }
@@ -32,7 +28,7 @@ input[name="r"] {
 	height: 100%;
 }
 
-.navigation {
+.courosel-labels {
 	position: absolute;
 	bottom: 20px;
 	left: 50%;
@@ -40,7 +36,7 @@ input[name="r"] {
 	display: flex;
 }
 
-.bar {
+.courosel-label {
 	width: 50px;
 	height: 10px;
 	border: 2px solid white;
@@ -48,51 +44,31 @@ input[name="r"] {
 	cursor: pointer;
 }
 
-.bar:hover {
+.courosel-label:hover {
 	background: white;
 }
 
-#first-label-on {
+#first-label-on, #second-label-on, #third-label-on, #forth-label-on, #fifth-label-on {
 	background-color: white;
 	transition-duration: 1000ms;
 }
 
-#second-label-on {
-	background-color: white;
-	transition-duration: 1000ms;
-}
-
-#third-label-on {
-	background-color: white;
-	transition-duration: 1000ms;
-}
-
-#forth-label-on {
-	background-color: white;
-	transition-duration: 1000ms;
-}
-
-#fifth-label-on {
-	background-color: white;
-	transition-duration: 1000ms;
-}
-
-.first-img > .slides > #r1 ~ .s1 {
+.first-img > .slides > .s1 {
 	margin-left: 0%;
 }
 
-.second-img > .slides > #r2 ~ .s1 {
+.second-img > .slides > .s1 {
 	margin-left: -20%;
 }
 
-.third-img > .slides > #r3 ~ .s1 {
+.third-img > .slides > .s1 {
 	margin-left: -40%;
 }
 
-.forth-img > .slides > #r4 ~ .s1 {
+.forth-img > .slides > .s1 {
 	margin-left: -60%;
 }
 
-.fifth-img > .slides > #r5 ~ .s1 {
+.fifth-img > .slides > .s1 {
 	margin-left: -80%;
 }

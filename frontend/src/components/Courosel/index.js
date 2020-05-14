@@ -1,9 +1,3 @@
-/*
-refactor
-css and sizing
-fixate when user hover it
-*/
-
 import React from "react";
 import "./index.css";
 
@@ -132,40 +126,9 @@ export default function Courosel() {
 	}, [state.index]);
 
 	return (
-		<div className="slidershow middle">
-			<div 
-				className = {slides[state.index].className}>
+		<div className="slider">
+			<div className={slides[state.index].className}>
 				<div className="slides">
-					<input 
-						type="radio" 
-						name="r" 
-						id="r1" 
-						onClick={() => dispatch({ type: "moveToFirstIndex" })}
-					/>
-					<input 
-						type="radio" 
-						name="r" 
-						id="r2" 
-						onClick={() => dispatch({ type: "moveToSecondIndex" })}
-					/>
-					<input 
-						type="radio" 
-						name="r" 
-						id="r3" 
-						onClick={() => dispatch({ type: "moveToThirdIndex" })}
-					/>
-					<input 
-						type="radio" 
-						name="r" 
-						id="r4" 
-						onClick={() => dispatch({ type: "moveToForthIndex" })}
-					/>
-					<input 
-						type="radio" 
-						name="r" 
-						id="r5" 
-						onClick={() => dispatch({ type: "moveToFifthIndex" })}
-					/>
 					<div className="slide s1">
 						<img src={slides[0].imgUrl} alt=""/>
 					</div>
@@ -181,38 +144,63 @@ export default function Courosel() {
 					<div className="slide">
 						<img src={slides[4].imgUrl} alt=""/>
 					</div>
-					<div className="navigation">
+					<div className="courosel-labels">
 						<label 
-							htmlFor="r1" 
-							className="bar"
+							htmlFor="first-input" 
+							className="courosel-label"
 							id={`first-label-${state.labels[0]}`}
 						>
 						</label>
 						<label 
-							htmlFor="r2" 
-							className="bar"
+							htmlFor="second-input" 
+							className="courosel-label"
 							id={`second-label-${state.labels[1]}`}
 						>
 						</label>
 						<label 
-							htmlFor="r3" 
-							className="bar"
+							htmlFor="third-input" 
+							className="courosel-label"
 							id={`third-label-${state.labels[2]}`}
 						>
 						</label>
 						<label 
-							htmlFor="r4" 
-							className="bar"
+							htmlFor="forth-input" 
+							className="courosel-label"
 							id={`forth-label-${state.labels[3]}`}
 						>
 						</label>
 						<label 
-							htmlFor="r5" 
-							className="bar"
+							htmlFor="fifth-input" 
+							className="courosel-label"
 							id={`fifth-label-${state.labels[4]}`}
 						>
 						</label>
 					</div>
+					<input 
+						type="radio" 
+						id="first-input" 
+						onClick={() => dispatch({ type: "moveToFirstIndex" })}
+					/>
+					<input 
+						type="radio" 
+						id="second-input" 
+						onClick={() => dispatch({ type: "moveToSecondIndex" })}
+					/>
+					<input 
+						type="radio" 
+						id="third-input" 
+						onClick={() => dispatch({ type: "moveToThirdIndex" })}
+					/>
+					<input 
+						type="radio" 
+						id="forth-input" 
+						onClick={() => dispatch({ type: "moveToForthIndex" })}
+					/>
+					<input 
+						type="radio" 
+						id="fifth-input" 
+						onClick={() => dispatch({ type: "moveToFifthIndex" })}
+					/>
 				</div>
 			</div>
 		</div>
