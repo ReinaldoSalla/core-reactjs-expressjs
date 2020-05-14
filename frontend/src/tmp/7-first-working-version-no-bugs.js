@@ -43,10 +43,6 @@ function directionReducer(state, action) {
 
 function countReducer(state, action) {
 	switch (action.type) {
-		case "increment":
-			return { count: state.count + 1 };
-		case "decrement":
-			return { count: state.count - 1};
 		case "move-to-first": 
 			return { count: 0 };
 		case "move-to-second":
@@ -57,6 +53,10 @@ function countReducer(state, action) {
 			return { count: 3 };
 		case "move-to-fifth":
 			return { count: 4 }
+		case "increment":
+			return { count: state.count + 1 };
+		case "decrement":
+			return { count: state.count - 1};
 		default:
 			return state;
 	}
@@ -109,7 +109,7 @@ export default function Courosel() {
 		} else if (countState.count === 4) {
 			directionDispatch({ type: "setToLeft" });
 		}
-	}, [countState.count])
+	}, [countState.count]);
 
 	React.useEffect(() => {
 		switch (countState.count) {

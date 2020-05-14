@@ -1,4 +1,5 @@
 /*
+refactor
 css and sizing
 fixate when user hover it
 */
@@ -42,15 +43,15 @@ function reducerDirection(state, action) {
 
 function reducerIndex(state, action) {
 	switch (action.type) {
-		case "moveToFirst": 
+		case "move-to-first": 
 			return { index: 0 };
-		case "moveToSecond":
+		case "move-to-second":
 			return { index: 1 };
-		case "moveToThird":
+		case "move-to-third":
 			return { index: 2 };
-		case "moveToForth":
+		case "move-to-forth":
 			return { index: 3 };
-		case "moveToFifth":
+		case "move-to-fifth":
 			return { index: 4 }
 		case "increment":
 			return { index: state.index + 1 };
@@ -63,15 +64,15 @@ function reducerIndex(state, action) {
 
 function reducerLabels(state, action) {
 	switch (action.type) {
-		case "highlightFirst":
+		case "highlight-first":
 			return { labels: ["on", "off", "off", "off", "off"] };
-		case "highlightSecond":
+		case "highlight-second":
 			return { labels: ["off", "on", "off", "off", "off" ]};
-		case "highlightThird":
+		case "highlight-third":
 			return { labels: ["off", "off", "on", "off", "off" ]};
-		case "highlightForth":
+		case "highlight-forth":
 			return { labels: ["off", "off", "off", "on", "off" ]};
-		case "highlightFifth":
+		case "highlight-fifth":
 			return { labels: ["off", "off", "off", "off", "on" ]};
 		default:
 			return state; 
@@ -83,7 +84,7 @@ export default function Courosel() {
 		index: 0
 	});
 	const [stateDirection, dispatchDirection] = React.useReducer(reducerDirection, {
-		direction: "right"
+		direction: true
 	});
 	const [stateLabels, dispatchLabels] = React.useReducer(reducerLabels, {
 		labels: ["on", "off", "off", "off", "off"]
@@ -129,19 +130,19 @@ export default function Courosel() {
 	React.useEffect(() => {
 		switch (stateIndex.index) {
 			case 0:
-				dispatchLabels({ type: "highlightFirst" });
+				dispatchLabels({ type: "highlight-first" });
 				break;
 			case 1:
-				dispatchLabels({ type: "highlightSecond" });
+				dispatchLabels({ type: "highlight-second" });
 				break;
 			case 2:
-				dispatchLabels({ type: "highlightThird" });
+				dispatchLabels({ type: "highlight-third" });
 				break;
 			case 3:
-				dispatchLabels({ type: "highlightForth" });
+				dispatchLabels({ type: "highlight-forth" });
 				break;
 			case 4:
-				dispatchLabels({ type: "highlightFifth" });
+				dispatchLabels({ type: "highlight-fifth" });
 				break;
 			default:
 				throw new TypeError("Indexes must be [0 ... 4]");
@@ -157,31 +158,31 @@ export default function Courosel() {
 						type="radio" 
 						name="r" 
 						id="r1" 
-						onClick={() => dispatchIndex({ type: "moveToFirst" })}
+						onClick={() => dispatchIndex({ type: "move-to-first" })}
 					/>
 					<input 
 						type="radio" 
 						name="r" 
 						id="r2" 
-						onClick={() => dispatchIndex({ type: "moveToSecond" })}
+						onClick={() => dispatchIndex({ type: "move-to-second" })}
 					/>
 					<input 
 						type="radio" 
 						name="r" 
 						id="r3" 
-						onClick={() => dispatchIndex({ type: "moveToThird" })}
+						onClick={() => dispatchIndex({ type: "move-to-third" })}
 					/>
 					<input 
 						type="radio" 
 						name="r" 
 						id="r4" 
-						onClick={() => dispatchIndex({ type: "moveToForth" })}
+						onClick={() => dispatchIndex({ type: "move-to-forth" })}
 					/>
 					<input 
 						type="radio" 
 						name="r" 
 						id="r5" 
-						onClick={() => dispatchIndex({ type: "moveToFifth" })}
+						onClick={() => dispatchIndex({ type: "move-to-fifth" })}
 					/>
 					<div className="slide s1">
 						<img src={slides[0].imgUrl} alt=""/>
