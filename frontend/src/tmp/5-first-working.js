@@ -31,18 +31,16 @@ const slides = [
 ];
 
 function directionReducer(state, action) {
-	switch (action.type) {
-		case "setToRight":
-			return { direction: "right" };
-		case "setToLeft":
-			return { direction: "left" };
+	switch(action.type) {
+		case "changeDirection": 
+			return { direction: !state.direction }
 		default:
 			return state;
 	}
 }
 
 function countReducer(state, action) {
-	switch (action.type) {
+	switch(action.type) {
 		case "increment":
 			return { count: state.count + 1 };
 		case "decrement":
@@ -79,22 +77,25 @@ function reducerLabels(state, action) {
 	}
 }
 
-export default function Courosel() {
+export default function App() {
 	const [countState, countDispatch] = React.useReducer(countReducer, { 
 		count: 0
 	});
 	const [directionState, directionDispatch] = React.useReducer(directionReducer, {
 		direction: true
 	});
+	const [firstRound, setFirstRound] = React.useState(true);
 	const [stateLabels, dispatchLabels] = React.useReducer(reducerLabels, {
 		labels: ["on", "off", "off", "off", "off"]
 	});
+	const index = countState.count % slides.length;
 
+	console.log(`index = ${index}`);
 	console.log(`countState.count = ${countState.count}`);
 
 	React.useEffect(() => {
 		const intervalId = setInterval(() => {
-			if (directionState.direction === "right") {
+			if (directionState.direction) {
 				countDispatch({ type: "increment" });
 			} else {
 				countDispatch({ type: "decrement" });
@@ -104,14 +105,16 @@ export default function Courosel() {
 	});
 
 	React.useEffect(() => {
-		if (countState.count === 0) {
-			directionDispatch({ type: "setToRight" });
-		} else if (countState.count === 4) {
-			directionDispatch({ type: "setToLeft" });
+		if (countState.count % 4 === 0) {
+			if (!firstRound)
+				directionDispatch({ type: "changeDirection" });
+			setFirstRound(false);
 		}
-	}, [countState.count])
+	}, [countState.count]);
 
 	React.useEffect(() => {
+		console.log(`index = ${index}`);
+		console.log(`countState.count = ${countState.count}`);
 		switch (countState.count) {
 			case 0:
 				dispatchLabels({ type: "highlight-first" });
@@ -136,7 +139,11 @@ export default function Courosel() {
 	return (
 		<div className="slidershow middle">
 			<div 
-				className = {slides[countState.count].className}>
+				className = {
+					slides[countState.count % slides.length]
+					?	slides[countState.count % slides.length].className
+					: slides[1].className
+				}>
 				<div className="slides">
 					<input 
 						type="radio" 

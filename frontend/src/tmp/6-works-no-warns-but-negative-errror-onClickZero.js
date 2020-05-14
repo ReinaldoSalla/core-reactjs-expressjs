@@ -32,10 +32,8 @@ const slides = [
 
 function directionReducer(state, action) {
 	switch (action.type) {
-		case "setToRight":
-			return { direction: "right" };
-		case "setToLeft":
-			return { direction: "left" };
+		case "changeDirection": 
+			return { direction: !state.direction }
 		default:
 			return state;
 	}
@@ -79,6 +77,15 @@ function reducerLabels(state, action) {
 	}
 }
 
+function reducerFirstRound(state, action) {
+	switch (action.type) {
+		case "disableFirstRound":
+			return { firstRound: false };
+		default:
+			return state;
+	}
+}
+
 export default function Courosel() {
 	const [countState, countDispatch] = React.useReducer(countReducer, { 
 		count: 0
@@ -89,12 +96,15 @@ export default function Courosel() {
 	const [stateLabels, dispatchLabels] = React.useReducer(reducerLabels, {
 		labels: ["on", "off", "off", "off", "off"]
 	});
+	const [stateFirstRound, dispatchFirstRound] = React.useReducer(reducerFirstRound, {
+		firstRound: true
+	}); 
 
 	console.log(`countState.count = ${countState.count}`);
 
 	React.useEffect(() => {
 		const intervalId = setInterval(() => {
-			if (directionState.direction === "right") {
+			if (directionState.direction) {
 				countDispatch({ type: "increment" });
 			} else {
 				countDispatch({ type: "decrement" });
@@ -104,12 +114,15 @@ export default function Courosel() {
 	});
 
 	React.useEffect(() => {
-		if (countState.count === 0) {
-			directionDispatch({ type: "setToRight" });
-		} else if (countState.count === 4) {
-			directionDispatch({ type: "setToLeft" });
+		if ((countState.count > 0) && (stateFirstRound.firstRound)) 
+			dispatchFirstRound({ type: "disableFirstRound"});
+	}, [countState.count, stateFirstRound.firstRound]);
+
+	React.useEffect(() => {
+		if ((countState.count % 4 === 0) && !stateFirstRound.firstRound) {
+			directionDispatch({ type: "changeDirection" });
 		}
-	}, [countState.count])
+	}, [countState.count, stateFirstRound.firstRound]);
 
 	React.useEffect(() => {
 		switch (countState.count) {
