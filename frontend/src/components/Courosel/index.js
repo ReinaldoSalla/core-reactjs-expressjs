@@ -1,4 +1,5 @@
 /*
+refactor
 css and sizing
 fixate when user hover it
 */
@@ -29,88 +30,70 @@ const slides = [
 	}
 ];
 
-function reducerDirection(state, action) {
+function reducer(state, action) {
 	switch (action.type) {
-		case "setToRight":
-			return { direction: "right" };
-		case "setToLeft":
-			return { direction: "left" };
+		case "setDirectionToRight":
+			return { ...state, direction: "right" };
+		case "setDirectionToLeft":
+			return { ...state, direction: "left" };
+		case "moveToFirstIndex":
+			return { ...state, index: 0 };
+		case "moveToSecondIndex":
+			return { ...state, index: 1 };
+		case "moveToThirdIndex":
+			return { ...state, index: 2 };
+		case "moveToForthIndex":
+			return { ...state, index: 3 };
+		case "moveToFifthIndex":
+			return { ...state, index: 4 };
+		case "incrementIndex":
+			return { ...state, index: state.index + 1};
+		case "decrementIndex":
+			return { ...state, index: state.index - 1};
+		case "highlightFirstLabel":
+			return { ...state, labels: ["on", "off", "off", "off", "off" ]};
+		case "highlightSecondLabel":
+			return { ...state, labels: ["off", "on", "off", "off", "off" ]};
+		case "highlightThirdLabel":
+			return { ...state, labels: ["off", "off", "on", "off", "off" ]};
+		case "highlightForthLabel":
+			return { ...state, labels: ["off", "off", "off", "on", "off" ]};
+		case "highlightFifthLabel":
+			return { ...state, labels: ["off", "off", "off", "off", "on" ]};
 		default:
-			return state;
-	}
-}
-
-function reducerIndex(state, action) {
-	switch (action.type) {
-		case "moveToFirst": 
-			return { index: 0 };
-		case "moveToSecond":
-			return { index: 1 };
-		case "moveToThird":
-			return { index: 2 };
-		case "moveToForth":
-			return { index: 3 };
-		case "moveToFifth":
-			return { index: 4 }
-		case "increment":
-			return { index: state.index + 1 };
-		case "decrement":
-			return { index: state.index - 1};
-		default:
-			return state;
-	}
-}
-
-function reducerLabels(state, action) {
-	switch (action.type) {
-		case "highlightFirst":
-			return { labels: ["on", "off", "off", "off", "off"] };
-		case "highlightSecond":
-			return { labels: ["off", "on", "off", "off", "off" ]};
-		case "highlightThird":
-			return { labels: ["off", "off", "on", "off", "off" ]};
-		case "highlightForth":
-			return { labels: ["off", "off", "off", "on", "off" ]};
-		case "highlightFifth":
-			return { labels: ["off", "off", "off", "off", "on" ]};
-		default:
-			return state; 
+			throw new TypeError(`Action '${action.type} is undefined'`);
 	}
 }
 
 export default function Courosel() {
-	const [stateIndex, dispatchIndex] = React.useReducer(reducerIndex, { 
-		index: 0
-	});
-	const [stateDirection, dispatchDirection] = React.useReducer(reducerDirection, {
-		direction: "right"
-	});
-	const [stateLabels, dispatchLabels] = React.useReducer(reducerLabels, {
+	const [state, dispatch] = React.useReducer(reducer, {
+		index: 0,
+		directoin: "right",
 		labels: ["on", "off", "off", "off", "off"]
 	});
 
-	console.log(`stateIndex.index = ${stateIndex.index}`);
+	console.log(`state.index = ${state.index}`);
 
 	React.useEffect(() => {
 		const intervalId = setInterval(() => {
-			switch (stateDirection.direction) {
+			switch (state.direction) {
 				case "right":
-					dispatchIndex({ type: "increment" });
+					dispatch({ type: "incrementIndex" });
 					break;
 				case "left":
-					dispatchIndex({ type: "decrement" });
+					dispatch({ type: "decrementIndex" });
 					break;
 				default:
-					throw new TypeError("Direction error");
+					throw new TypeError(`Direction ${state.direction} is undifined`);
 			}
 		}, 2000);
 		return () => clearInterval(intervalId);
-	});
+	}, [state.direction]);
 
 	React.useEffect(() => {
-		switch (stateIndex.index) {
+		switch (state.index) {
 			case 0:
-				dispatchDirection({ type: "setToRight" });
+				dispatch({ type: "setDirectionToRight" });
 				break;
 			case 1: 
 				break;
@@ -119,69 +102,69 @@ export default function Courosel() {
 			case 3:
 				break;
 			case 4:
-				dispatchDirection({ type: "setToLeft" });
+				dispatch({ type: "setDirectionToLeft" });
 				break
 			default:
-				throw new TypeError("Indexed must be [0 ... 4]");
+				throw new TypeError(`Index ${state.index} is undefined`);
 		}
-	}, [stateIndex.index]);
+	}, [state.index]);
 
 	React.useEffect(() => {
-		switch (stateIndex.index) {
+		switch (state.index) {
 			case 0:
-				dispatchLabels({ type: "highlightFirst" });
+				dispatch({ type: "highlightFirstLabel" });
 				break;
 			case 1:
-				dispatchLabels({ type: "highlightSecond" });
+				dispatch({ type: "highlightSecondLabel" });
 				break;
 			case 2:
-				dispatchLabels({ type: "highlightThird" });
+				dispatch({ type: "highlightThirdLabel" });
 				break;
 			case 3:
-				dispatchLabels({ type: "highlightForth" });
+				dispatch({ type: "highlightForthLabel" });
 				break;
 			case 4:
-				dispatchLabels({ type: "highlightFifth" });
+				dispatch({ type: "highlightFifthLabel" });
 				break;
 			default:
-				throw new TypeError("Indexes must be [0 ... 4]");
+				throw new TypeError(`Index ${state.index} is undefined`);
 		}
-	}, [stateIndex.index]);
+	}, [state.index]);
 
 	return (
 		<div className="slidershow middle">
 			<div 
-				className = {slides[stateIndex.index].className}>
+				className = {slides[state.index].className}>
 				<div className="slides">
 					<input 
 						type="radio" 
 						name="r" 
 						id="r1" 
-						onClick={() => dispatchIndex({ type: "moveToFirst" })}
+						onClick={() => dispatch({ type: "moveToFirstIndex" })}
 					/>
 					<input 
 						type="radio" 
 						name="r" 
 						id="r2" 
-						onClick={() => dispatchIndex({ type: "moveToSecond" })}
+						onClick={() => dispatch({ type: "moveToSecondIndex" })}
 					/>
 					<input 
 						type="radio" 
 						name="r" 
 						id="r3" 
-						onClick={() => dispatchIndex({ type: "moveToThird" })}
+						onClick={() => dispatch({ type: "moveToThirdIndex" })}
 					/>
 					<input 
 						type="radio" 
 						name="r" 
 						id="r4" 
-						onClick={() => dispatchIndex({ type: "moveToForth" })}
+						onClick={() => dispatch({ type: "moveToForthIndex" })}
 					/>
 					<input 
 						type="radio" 
 						name="r" 
 						id="r5" 
-						onClick={() => dispatchIndex({ type: "moveToFifth" })}
+						onClick={() => dispatch({ type: "moveToFifthIndex" })}
 					/>
 					<div className="slide s1">
 						<img src={slides[0].imgUrl} alt=""/>
@@ -202,31 +185,31 @@ export default function Courosel() {
 						<label 
 							htmlFor="r1" 
 							className="bar"
-							id={`first-label-${stateLabels.labels[0]}`}
+							id={`first-label-${state.labels[0]}`}
 						>
 						</label>
 						<label 
 							htmlFor="r2" 
 							className="bar"
-							id={`second-label-${stateLabels.labels[1]}`}
+							id={`second-label-${state.labels[1]}`}
 						>
 						</label>
 						<label 
 							htmlFor="r3" 
 							className="bar"
-							id={`third-label-${stateLabels.labels[2]}`}
+							id={`third-label-${state.labels[2]}`}
 						>
 						</label>
 						<label 
 							htmlFor="r4" 
 							className="bar"
-							id={`forth-label-${stateLabels.labels[3]}`}
+							id={`forth-label-${state.labels[3]}`}
 						>
 						</label>
 						<label 
 							htmlFor="r5" 
 							className="bar"
-							id={`fifth-label-${stateLabels.labels[4]}`}
+							id={`fifth-label-${state.labels[4]}`}
 						>
 						</label>
 					</div>

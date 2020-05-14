@@ -1,5 +1,4 @@
 /*
-refactor
 css and sizing
 fixate when user hover it
 */
@@ -54,11 +53,11 @@ function reducer(state, action) {
 			return { ...state, labels: ["on", "off", "off", "off", "off" ]};
 		case "highlightSecondLabel":
 			return { ...state, labels: ["off", "on", "off", "off", "off" ]};
-		case "highlight-third-label":
+		case "highlightThirdLabel":
 			return { ...state, labels: ["off", "off", "on", "off", "off" ]};
-		case "highlight-forth-label":
+		case "highlightForthLabel":
 			return { ...state, labels: ["off", "off", "off", "on", "off" ]};
-		case "highlight-fifth-label":
+		case "highlightFifthLabel":
 			return { ...state, labels: ["off", "off", "off", "off", "on" ]};
 		default:
 			throw new TypeError(`Action '${action.type} is undefined'`);
@@ -84,11 +83,11 @@ export default function Courosel() {
 					dispatch({ type: "decrementIndex" });
 					break;
 				default:
-					throw new TypeError("Direction error");
+					throw new TypeError(`Direction ${state.direction} is undifined`);
 			}
 		}, 2000);
 		return () => clearInterval(intervalId);
-	});
+	}, [state.direction]);
 
 	React.useEffect(() => {
 		switch (state.index) {
@@ -105,66 +104,66 @@ export default function Courosel() {
 				dispatch({ type: "setDirectionToLeft" });
 				break
 			default:
-				throw new TypeError("Indexed must be [0 ... 4]");
+				throw new TypeError(`Index ${state.index} is undefined`);
 		}
 	}, [state.index]);
 
 	React.useEffect(() => {
 		switch (state.index) {
 			case 0:
-				dispatch({ type: "highlight-first" });
+				dispatch({ type: "highlightFirstLabel" });
 				break;
 			case 1:
-				dispatch({ type: "highlight-second" });
+				dispatch({ type: "highlightSecondLabel" });
 				break;
 			case 2:
-				dispatch({ type: "highlight-third" });
+				dispatch({ type: "highlightThirdLabel" });
 				break;
 			case 3:
-				dispatch({ type: "highlight-forth" });
+				dispatch({ type: "highlightForthLabel" });
 				break;
 			case 4:
-				dispatch({ type: "highlight-fifth" });
+				dispatch({ type: "highlightFifthLabel" });
 				break;
 			default:
-				throw new TypeError("Indexes must be [0 ... 4]");
+				throw new TypeError(`Index ${state.index} is undefined`);
 		}
-	}, [stateIndex.index]);
+	}, [state.index]);
 
 	return (
 		<div className="slidershow middle">
 			<div 
-				className = {slides[stateIndex.index].className}>
+				className = {slides[state.index].className}>
 				<div className="slides">
 					<input 
 						type="radio" 
 						name="r" 
 						id="r1" 
-						onClick={() => dispatchIndex({ type: "move-to-first" })}
+						onClick={() => dispatch({ type: "moveToFirstIndex" })}
 					/>
 					<input 
 						type="radio" 
 						name="r" 
 						id="r2" 
-						onClick={() => dispatchIndex({ type: "move-to-second" })}
+						onClick={() => dispatch({ type: "moveToSecondIndex" })}
 					/>
 					<input 
 						type="radio" 
 						name="r" 
 						id="r3" 
-						onClick={() => dispatchIndex({ type: "move-to-third" })}
+						onClick={() => dispatch({ type: "moveToThirdIndex" })}
 					/>
 					<input 
 						type="radio" 
 						name="r" 
 						id="r4" 
-						onClick={() => dispatchIndex({ type: "move-to-forth" })}
+						onClick={() => dispatch({ type: "moveToForthIndex" })}
 					/>
 					<input 
 						type="radio" 
 						name="r" 
 						id="r5" 
-						onClick={() => dispatchIndex({ type: "move-to-fifth" })}
+						onClick={() => dispatch({ type: "moveToFifthIndex" })}
 					/>
 					<div className="slide s1">
 						<img src={slides[0].imgUrl} alt=""/>
@@ -185,31 +184,31 @@ export default function Courosel() {
 						<label 
 							htmlFor="r1" 
 							className="bar"
-							id={`first-label-${stateLabels.labels[0]}`}
+							id={`first-label-${state.labels[0]}`}
 						>
 						</label>
 						<label 
 							htmlFor="r2" 
 							className="bar"
-							id={`second-label-${stateLabels.labels[1]}`}
+							id={`second-label-${state.labels[1]}`}
 						>
 						</label>
 						<label 
 							htmlFor="r3" 
 							className="bar"
-							id={`third-label-${stateLabels.labels[2]}`}
+							id={`third-label-${state.labels[2]}`}
 						>
 						</label>
 						<label 
 							htmlFor="r4" 
 							className="bar"
-							id={`forth-label-${stateLabels.labels[3]}`}
+							id={`forth-label-${state.labels[3]}`}
 						>
 						</label>
 						<label 
 							htmlFor="r5" 
 							className="bar"
-							id={`fifth-label-${stateLabels.labels[4]}`}
+							id={`fifth-label-${state.labels[4]}`}
 						>
 						</label>
 					</div>
