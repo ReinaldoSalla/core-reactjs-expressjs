@@ -5,8 +5,6 @@ join with topbar, sidebar and everything else
 import React from "react";
 import "./index.css";
 
-const duration = 4000;
-
 const slides = [
 	{
 		imgUrl: "https://preview.ibb.co/j8nRCQ/fashion2.jpg",
@@ -30,6 +28,8 @@ const slides = [
 	}
 ];
 
+const duration = 2000;
+
 function reducer(state, action) {
 	switch (action.type) {
 		case "setDirectionToRight":
@@ -37,15 +37,15 @@ function reducer(state, action) {
 		case "setDirectionToLeft":
 			return { ...state, direction: "left" };
 		case "moveToFirstIndex":
-			return { ...state, index: 0, duration: 2 * duration };
+			return { ...state, index: 0, duration: duration * 2 };
 		case "moveToSecondIndex":
-			return { ...state, index: 1, duration: 2 * duration };
+			return { ...state, index: 1, duration: duration * 2 };
 		case "moveToThirdIndex":
-			return { ...state, index: 2, duration: 2 * duration };
+			return { ...state, index: 2, duration: duration * 2 };
 		case "moveToForthIndex":
-			return { ...state, index: 3, duration: 2 * duration };
+			return { ...state, index: 3, duration: duration * 2 };
 		case "moveToFifthIndex":
-			return { ...state, index: 4, duration: 2 * duration };
+			return { ...state, index: 4, duration: duration * 2 };
 		case "incrementIndex":
 			return { ...state, index: state.index + 1, duration: duration };
 		case "decrementIndex":
@@ -136,30 +136,35 @@ export default function Courosel() {
 				<div className="imgs">
 					<div className="reference-img">
 						<img
+							id="courosel-img"
 							src={slides[0].imgUrl} 
 							alt=""
 						/>
 					</div>
 					<div className="displaced-img">
 						<img 
+							id="courosel-img"
 							src={slides[1].imgUrl} 
 							alt=""
 						/>
 					</div>
 					<div className="displaced-img">
 						<img 
+							id="courosel-img"
 							src={slides[2].imgUrl} 
 							alt=""
 						/>
 					</div>
 					<div className="displaced-img">
 						<img 
+							id="courosel-img"
 							src={slides[3].imgUrl} 
 							alt=""
 						/>
 					</div>
 					<div className="displaced-img">
 						<img
+							id="courosel-img"
 							src={slides[4].imgUrl} 
 							alt=""
 						/>

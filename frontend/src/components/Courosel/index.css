@@ -1,8 +1,8 @@
 .courosel {
-	width: 700px;
-	height: 400px;
 	overflow: hidden;
-	position: absolute;
+	width: 1200px;
+	height: 400px;
+	position: relative;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -18,6 +18,11 @@
 	transition-duration: 1000ms;
 	display: flex;
 	justify-content: center;
+}
+
+#courosel-img {
+	width: 100%;
+	height: 100%;
 }
 
 .first-img > .imgs > .reference-img {
