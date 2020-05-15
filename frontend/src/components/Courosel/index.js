@@ -1,10 +1,11 @@
 /*
-when the user hover or clicks the input
-final js and css sistematiz
+join with topbar, sidebar and everything else
 */
 
 import React from "react";
 import "./index.css";
+
+const duration = 4000;
 
 const slides = [
 	{
@@ -36,19 +37,19 @@ function reducer(state, action) {
 		case "setDirectionToLeft":
 			return { ...state, direction: "left" };
 		case "moveToFirstIndex":
-			return { ...state, index: 0 };
+			return { ...state, index: 0, duration: 2 * duration };
 		case "moveToSecondIndex":
-			return { ...state, index: 1 };
+			return { ...state, index: 1, duration: 2 * duration };
 		case "moveToThirdIndex":
-			return { ...state, index: 2 };
+			return { ...state, index: 2, duration: 2 * duration };
 		case "moveToForthIndex":
-			return { ...state, index: 3 };
+			return { ...state, index: 3, duration: 2 * duration };
 		case "moveToFifthIndex":
-			return { ...state, index: 4 };
+			return { ...state, index: 4, duration: 2 * duration };
 		case "incrementIndex":
-			return { ...state, index: state.index + 1};
+			return { ...state, index: state.index + 1, duration: duration };
 		case "decrementIndex":
-			return { ...state, index: state.index - 1};
+			return { ...state, index: state.index - 1, duration: duration };
 		case "highlightFirstLabel":
 			return { ...state, labels: ["on", "off", "off", "off", "off" ]};
 		case "highlightSecondLabel":
@@ -68,7 +69,8 @@ export default function Courosel() {
 	const [state, dispatch] = React.useReducer(reducer, {
 		index: 0,
 		directoin: "right",
-		labels: ["on", "off", "off", "off", "off"]
+		labels: ["on", "off", "off", "off", "off"],
+		duration: duration
 	});
 
 	React.useEffect(() => {
@@ -83,9 +85,9 @@ export default function Courosel() {
 				default:
 					throw new ReferenceError(`Direction ${state.direction} is not defined`);
 			}
-		}, 2000);
+		}, state.duration);
 		return () => clearInterval(intervalId);
-	}, [state.direction]);
+	}, [state.direction, state.duration]);
 
 	React.useEffect(() => {
 		switch (state.index) {
@@ -165,7 +167,7 @@ export default function Courosel() {
 					<div className="courosel-labels">
 						<label 
 							htmlFor="first-input" 
-							className="courosel-label"
+							className="courosel-label first-label"
 							id={`first-label-${state.labels[0]}`}
 						>
 						</label>
