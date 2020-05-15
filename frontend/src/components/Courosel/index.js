@@ -1,3 +1,8 @@
+/*
+when the user hover or clicks the input
+final js and css sistematiz
+*/
+
 import React from "react";
 import "./index.css";
 
@@ -55,7 +60,7 @@ function reducer(state, action) {
 		case "highlightFifthLabel":
 			return { ...state, labels: ["off", "off", "off", "off", "on" ]};
 		default:
-			throw new TypeError(`Action '${action.type} is undefined'`);
+			throw new ReferenceError(`Action '${action.type} is not defined'`);
 	}
 }
 
@@ -65,8 +70,6 @@ export default function Courosel() {
 		directoin: "right",
 		labels: ["on", "off", "off", "off", "off"]
 	});
-
-	console.log(`state.index = ${state.index}`);
 
 	React.useEffect(() => {
 		const intervalId = setInterval(() => {
@@ -78,7 +81,7 @@ export default function Courosel() {
 					dispatch({ type: "decrementIndex" });
 					break;
 				default:
-					throw new TypeError(`Direction ${state.direction} is undifined`);
+					throw new ReferenceError(`Direction ${state.direction} is not defined`);
 			}
 		}, 2000);
 		return () => clearInterval(intervalId);
@@ -99,7 +102,7 @@ export default function Courosel() {
 				dispatch({ type: "setDirectionToLeft" });
 				break
 			default:
-				throw new TypeError(`Index ${state.index} is undefined`);
+				throw new ReferenceError(`Index ${state.index} is not defined`);
 		}
 	}, [state.index]);
 
@@ -121,28 +124,43 @@ export default function Courosel() {
 				dispatch({ type: "highlightFifthLabel" });
 				break;
 			default:
-				throw new TypeError(`Index ${state.index} is undefined`);
+				throw new ReferenceError(`Index ${state.index} is not defined`);
 		}
 	}, [state.index]);
 
 	return (
-		<div className="slider">
+		<div className="courosel">
 			<div className={slides[state.index].className}>
-				<div className="slides">
-					<div className="slide s1">
-						<img src={slides[0].imgUrl} alt=""/>
+				<div className="imgs">
+					<div className="reference-img">
+						<img
+							src={slides[0].imgUrl} 
+							alt=""
+						/>
 					</div>
-					<div className="slide">
-						<img src={slides[1].imgUrl} alt=""/>
+					<div className="displaced-img">
+						<img 
+							src={slides[1].imgUrl} 
+							alt=""
+						/>
 					</div>
-					<div className="slide">
-						<img src={slides[2].imgUrl} alt=""/>
+					<div className="displaced-img">
+						<img 
+							src={slides[2].imgUrl} 
+							alt=""
+						/>
 					</div>
-					<div className="slide">
-						<img src={slides[3].imgUrl} alt=""/>
+					<div className="displaced-img">
+						<img 
+							src={slides[3].imgUrl} 
+							alt=""
+						/>
 					</div>
-					<div className="slide">
-						<img src={slides[4].imgUrl} alt=""/>
+					<div className="displaced-img">
+						<img
+							src={slides[4].imgUrl} 
+							alt=""
+						/>
 					</div>
 					<div className="courosel-labels">
 						<label 
