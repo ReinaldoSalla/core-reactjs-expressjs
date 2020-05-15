@@ -28,7 +28,7 @@ const slides = [
 	}
 ];
 
-const duration = 2000;
+const duration = 100 * 1000;
 
 function reducer(state, action) {
 	switch (action.type) {

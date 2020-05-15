@@ -11,7 +11,7 @@ body {
   grid-template-areas:
     "topbar  topbar   topbar"
     "courosel courosel courosel"
-    "sidebar content  ads"
+    "content content  content"
     "footer  footer   footer";
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: auto;
@@ -26,7 +26,8 @@ body {
 }
 
 .sidebar {
-  grid-area: sidebar;
+  position: absolute;
+  margin-top: 100px;
 }
 
 .courosel {
@@ -38,10 +39,6 @@ body {
   background-color: green;
 }
 
-.ads {
-  grid-area: ads;
-  background-color: blue;
-}
 
 .footer {
   grid-area: footer;

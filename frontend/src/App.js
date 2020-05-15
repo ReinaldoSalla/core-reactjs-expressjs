@@ -5,7 +5,6 @@ import SidebarProvider from "./context/SidebarProvider/";
 import Courosel from "./components/Courosel";
 import "./App.css"
 
-
 function Todo(props) {
 	return <span>todo {props.name}</span>
 }
@@ -25,9 +24,6 @@ export default function App() {
 	    	</div>
 	    	<div className="content">	
 	    		<Todo name="Content" />
-	    	</div>
-	    	<div className="ads">
-	    		<Todo name="Ads" />
 	    	</div>
 	    	<div className="footer">
 	    		<Todo name="Footer" />
