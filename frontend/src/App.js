@@ -3,6 +3,7 @@ import Topbar from "./components/Topbar/";
 import Sidebar from "./components/Sidebar";
 import SidebarProvider from "./context/SidebarProvider/";
 import Courosel from "./components/Courosel";
+import Content from "./components/Content";
 import "./App.css"
 
 function Todo(props) {
@@ -23,7 +24,7 @@ export default function App() {
 	    		<Courosel />
 	    	</div>
 	    	<div className="content">	
-	    		<Todo name="Content" />
+	    		<Content />
 	    	</div>
 	    	<div className="footer">
 	    		<Todo name="Footer" />
