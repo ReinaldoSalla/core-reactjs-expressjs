@@ -1,7 +1,7 @@
-import React from "react"
-import Topbar from "./components/Topbar/";
+import React from "react";
+import Topbar from "./components/TopBar";
 import Sidebar from "./components/Sidebar";
-import SidebarProvider from "./context/SidebarProvider/";
+import SidebarProvider from "./context/SidebarProvider";
 import Courosel from "./components/Courosel";
 import Content from "./components/Content";
 import "./App.css"
