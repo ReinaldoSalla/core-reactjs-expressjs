@@ -6,6 +6,7 @@ import Courosel from "./components/Courosel";
 import Content from "./components/Content";
 import "./App.css"
 
+
 function Todo(props) {
 	return <span>todo {props.name}</span>
 }

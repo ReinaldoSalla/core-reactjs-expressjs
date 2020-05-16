@@ -1,7 +1,3 @@
-/*
-join with topbar, sidebar and everything else
-*/
-
 import React from "react";
 import "./index.css";
 
