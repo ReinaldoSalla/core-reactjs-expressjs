@@ -31,22 +31,6 @@
 	}
 }
 
-/*
-.product-info {
-	background-color: white;
-	height: 400px;
-	border: 1px solid black;
-	border-radius: 20px;
-	transition: 1000ms;
-	opacity: 0.5;
-}
-
-.product-info:hover {
-	transition: 1000ms;
-	opacity: 1;
-}
-*/
-
 .product-info {
 	background-color: white;
 	height: 400px;

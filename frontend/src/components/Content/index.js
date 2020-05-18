@@ -17,7 +17,7 @@ function Products(props) {
 			<div className="products-grid">
 				{data.map((product, index) => 
 					<div key={index} className="product-info">
-						<img id="product-img" src={product.img}/>
+						<img id="product-img" src={product.img} alt=""/>
 						<div className="product-text">
 							<span id="product-price">${product.price}</span>
 							<span id="product-name">{product.name}</span>
