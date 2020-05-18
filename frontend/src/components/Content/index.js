@@ -13,18 +13,21 @@ function Title(props) {
 
 function Products(props) {
 	return (
-		<div className="products-grid">
-			{data.map((product, index) => 
-				<div key={index} className="product-grid">
-					<span id="product-description">{product.description}</span>
-					<img id="product-img" src={product.img}/>
-					<span id="product-price">${product.price}</span>
-					<span id="product-name">{product.name}</span>
-					<FaCartPlus id="product-icon" />
-				</div>
-			)}
+		<div className="products-overflow">
+			<div className="products-grid">
+				{data.map((product, index) => 
+					<div key={index} className="product-info">
+						<img id="product-img" src={product.img}/>
+						<div className="product-text">
+							<span id="product-price">${product.price}</span>
+							<span id="product-name">{product.name}</span>
+							<FaCartPlus id="product-icon" />
+						</div>
+					</div>
+				)}
+			</div>
 		</div>
-	)
+	);
 }
 
 export default function Content() {
