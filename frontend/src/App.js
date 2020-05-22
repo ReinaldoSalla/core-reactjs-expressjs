@@ -4,6 +4,7 @@ import Sidebar from "./components/Sidebar";
 import SidebarProvider from "./context/SidebarProvider";
 import Courosel from "./components/Courosel";
 import Content from "./components/Content";
+import ApiTester from "./components/ApiTester";
 import "./App.css"
 
 function Todo(props) {
@@ -12,24 +13,27 @@ function Todo(props) {
 
 export default function App() {
   return (
-  	<SidebarProvider>
-	    <div className="app-grid">
-	    	<div className="topbar">
-	    		<Topbar />
-	    	</div>
-	    	<div className="sidebar">
-	    		<Sidebar />
-	    	</div>
-	    	<div className="courosel">
-	    		<Courosel />
-	    	</div>
-	    	<div className="content">	
-	    		<Content />
-	    	</div>
-	    	<div className="footer">
-	    		<Todo name="Footer" />
-	    	</div>
-	    </div>
-	  </SidebarProvider>
+  	<React.Fragment>
+	  	<ApiTester />
+	  	<SidebarProvider>
+		    <div className="app-grid">
+		    	<div className="topbar">
+		    		<Topbar />
+		    	</div>
+		    	<div className="sidebar">
+		    		<Sidebar />
+		    	</div>
+		    	<div className="courosel">
+		    		<Courosel />
+		    	</div>
+		    	<div className="content">	
+		    		<Content />
+		    	</div>
+		    	<div className="footer">
+		    		<Todo name="Footer" />
+		    	</div>
+		    </div>
+		  </SidebarProvider>
+		</React.Fragment>
   );
 }
