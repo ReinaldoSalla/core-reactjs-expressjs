@@ -1,11 +1,16 @@
+/*
+the loading would not work right now for new fetchs, it would clear the hole screen and start over
+Get the media size to render either one or two or three, but not always three
+Animate the slide up for each batch, not all of them
+*/
+
 import React from "react";
-import data from "../../data";
 import "./Content.css";
 
 const productsPerPage = 3;
 const ProductContext = React.createContext();
 
-function reducer(state, action) {
+const reducer = (state, action) => {
   switch (action.type) {
     case "LOAD":
       return {
@@ -23,51 +28,50 @@ function reducer(state, action) {
     default:
     	throw new ReferenceError(`Action type ${action.type} is not defined`);
   }
-}
+};
 
-function ProductProvider(props) {
+const Loading = () => (
+  <span id="loading">Loading...</span>
+);
+
+const Products = () => {
   const [state, dispatch] = React.useReducer(reducer, {
     products: [],
     isLoading: false,
     hasMore: true,
     currentIndex: 0
   });
-  return (
-    <ProductContext.Provider value={{
-      products: state.products,
-      isLoading: state.isLoading,
-      hasMore: state.hasMore,
-      startOperation: () => {
-        dispatch({ type: "LOAD" });
-        setTimeout(() => {
-        	dispatch({
-        		type: "RENDER",
-        		payload: data.slice(
-        			state.currentIndex,
-        			state.currentIndex + productsPerPage
-        		)
-        	});
-        }, 1000);
-      }
-    }}>
-    	{props.children}
-    </ProductContext.Provider>
-  );
-}
 
-const Loading = () => (
-  <span id="loading">Loading...</span>
-);
+  const startOperation = () => {
+    dispatch({ type: "LOAD" });
+    setTimeout(() => {
+      dispatch({
+        type: "RENDER",
+        payload: apiProducts.slice(
+          state.currentIndex,
+          state.currentIndex + productsPerPage
+        )
+      });
+    }, 1000);
+  };
 
-let nCalls = 0;
-
-function Products() {
-  const {products, isLoading, hasMore, startOperation} = React.useContext(ProductContext);
   const starter = React.useRef(startOperation);
   const observer = React.useRef(new IntersectionObserver(entries => {
   	if (entries[0].isIntersecting) starter.current();
   }, { threshold: 1 }));
   const [element, setElement] = React.useState(null);
+  const [isApiLoading, setApiIsLoading] = React.useState(true);
+  const [apiProducts, setApiProducts] = React.useState(null);
+
+  React.useEffect(() => {
+    fetch("http://localhost:8080/products")
+      .then(res => res.json())
+      .then(data => {
+        setApiProducts(data.products);
+        setApiIsLoading(false);
+      })
+      .catch(err => console.error(err));
+  }, []);
 
   React.useEffect(() => {
   	starter.current = startOperation;
@@ -75,35 +79,35 @@ function Products() {
 
   React.useEffect(() => {
     const currentObserver = observer.current
-  	if (element) {
-  		nCalls++;
-  		console.log(`observe #${nCalls}`);
-  		currentObserver.observe(element);
-  	}
+  	if (element) currentObserver.observe(element);
   	return () => {
   		if (element) currentObserver.unobserve(element);
   	}
   }, [element]);
 
+  if (isApiLoading) {
+    return (
+      <ul id="products-list">
+        <li id="loading-element">
+          <Loading />
+        </li>
+      </ul> 
+    );
+  }
+
   return (
   	<ul id="products-list">
       <div className="products-grid">
-    		{products.map((product, index) => 
+    		{state.products.map((product, index) => 
     			<li key={index} id="product-element">
     				product {index + 1}
     			</li>
     		)}
       </div>
-  		{isLoading && <li id="loading-element"><Loading/></li>}
-  		{!isLoading && hasMore && <li id="ref-element" ref={setElement}></li>}
+  		{state.isLoading && <li id="loading-element"><Loading/></li>}
+  		{!state.isLoading && state.hasMore && <li id="ref-element" ref={setElement}></li>}
   	</ul>
   );
-}
+};
 
-const Wrapper = () => (
-	<ProductProvider>
-		<Products />
-	</ProductProvider>
-);
-
-export default Wrapper;
+export default Products;
