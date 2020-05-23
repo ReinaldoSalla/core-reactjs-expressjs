@@ -8,7 +8,6 @@ import React from "react";
 import "./Content.css";
 
 const productsPerPage = 3;
-const ProductContext = React.createContext();
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -41,7 +40,10 @@ const Products = () => {
     hasMore: true,
     currentIndex: 0
   });
+  const [isApiLoading, setApiIsLoading] = React.useState(true);
+  const [apiProducts, setApiProducts] = React.useState(null);
 
+  /*
   const startOperation = () => {
     dispatch({ type: "LOAD" });
     setTimeout(() => {
@@ -54,14 +56,26 @@ const Products = () => {
       });
     }, 1000);
   };
+  */
+
+  const startOperation = React.useCallback(() => {
+    dispatch({ type: "LOAD" });
+    setTimeout(() => {
+      dispatch({
+        type: "RENDER",
+        payload: apiProducts.slice(
+          state.currentIndex,
+          state.currentIndex + productsPerPage
+        )
+      });
+    }, 1000);
+  }, [state.currentIndex, apiProducts]);
 
   const starter = React.useRef(startOperation);
   const observer = React.useRef(new IntersectionObserver(entries => {
   	if (entries[0].isIntersecting) starter.current();
   }, { threshold: 1 }));
   const [element, setElement] = React.useState(null);
-  const [isApiLoading, setApiIsLoading] = React.useState(true);
-  const [apiProducts, setApiProducts] = React.useState(null);
 
   React.useEffect(() => {
     fetch("http://localhost:8080/products")
