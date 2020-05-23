@@ -5,9 +5,14 @@ Animate the slide up for each batch, not all of them
 */
 
 import React from "react";
+import { FaCartPlus } from "react-icons/fa";
 import "./Content.css";
 
-const productsPerPage = 3;
+const Title = ({ title }) => (
+	<span id="products-title">
+		{title}
+	</span>
+);
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -21,7 +26,7 @@ const reducer = (state, action) => {
     		...state,
     		products: [...state.products, ...action.payload],
     		isLoading: false,
-    		hasMore: action.payload.length === productsPerPage,
+    		hasMore: action.payload.length === productsPerFetch,
     		currentIndex: state.currentIndex + action.payload.length
     	}
     default:
@@ -33,6 +38,8 @@ const Loading = () => (
   <span id="loading">Loading...</span>
 );
 
+const productsPerFetch = 12;
+
 const Products = () => {
   const [state, dispatch] = React.useReducer(reducer, {
     products: [],
@@ -43,21 +50,6 @@ const Products = () => {
   const [isApiLoading, setApiIsLoading] = React.useState(true);
   const [apiProducts, setApiProducts] = React.useState(null);
 
-  /*
-  const startOperation = () => {
-    dispatch({ type: "LOAD" });
-    setTimeout(() => {
-      dispatch({
-        type: "RENDER",
-        payload: apiProducts.slice(
-          state.currentIndex,
-          state.currentIndex + productsPerPage
-        )
-      });
-    }, 1000);
-  };
-  */
-
   const startOperation = React.useCallback(() => {
     dispatch({ type: "LOAD" });
     setTimeout(() => {
@@ -65,7 +57,7 @@ const Products = () => {
         type: "RENDER",
         payload: apiProducts.slice(
           state.currentIndex,
-          state.currentIndex + productsPerPage
+          state.currentIndex + productsPerFetch
         )
       });
     }, 1000);
@@ -75,7 +67,7 @@ const Products = () => {
   const observer = React.useRef(new IntersectionObserver(entries => {
   	if (entries[0].isIntersecting) starter.current();
   }, { threshold: 1 }));
-  const [element, setElement] = React.useState(null);
+  const [trigger, setTrigger] = React.useState(null);
 
   React.useEffect(() => {
     fetch("http://localhost:8080/products")
@@ -93,11 +85,11 @@ const Products = () => {
 
   React.useEffect(() => {
     const currentObserver = observer.current
-  	if (element) currentObserver.observe(element);
+  	if (trigger) currentObserver.observe(trigger);
   	return () => {
-  		if (element) currentObserver.unobserve(element);
+  		if (trigger) currentObserver.unobserve(trigger);
   	}
-  }, [element]);
+  }, [trigger]);
 
   if (isApiLoading) {
     return (
@@ -110,18 +102,32 @@ const Products = () => {
   }
 
   return (
-  	<ul id="products-list">
-      <div className="products-grid">
-    		{state.products.map((product, index) => 
-    			<li key={index} id="product-element">
-    				product {index + 1}
-    			</li>
-    		)}
-      </div>
-  		{state.isLoading && <li id="loading-element"><Loading/></li>}
-  		{!state.isLoading && state.hasMore && <li id="ref-element" ref={setElement}></li>}
-  	</ul>
+  	<div className="products-overflow">
+	  	<ul id="products-list">
+	      <div className="products-grid">
+	    		{state.products.map((product, index) => 
+	    			<li key={index} id="product-element">
+	    				<img id="product-img" src={product.img} alt={product.name}/>
+	            <div className="product-text">
+	              <span id="product-price">${product.price}</span>
+	              <span id="product-name">{product.name}</span>
+	              <FaCartPlus id="product-icon" />
+	            </div>
+	    			</li>
+	    		)}
+	      </div>
+	  		{state.isLoading && <li id="loading-element"><Loading/></li>}
+	  		{!state.isLoading && state.hasMore && <li id="ref-element" ref={setTrigger}></li>}
+	  	</ul>
+  	</div>
   );
 };
 
-export default Products;
+const Content = () => (
+	<React.Fragment>
+		<Title title="Best Offers" />
+		<Products />
+	</React.Fragment>
+);
+
+export default Content;

@@ -4,22 +4,25 @@ import Sidebar from "./components/Sidebar";
 import SidebarProvider from "./context/SidebarProvider";
 import Courosel from "./components/Courosel";
 import Content from "./components/Content";
+
 import "./App.css"
 
 function Todo(props) {
 	return <span>todo {props.name}</span>
 }
 
-export default function App() {
+function App() {
   return (
-  	<SidebarProvider>
+  	<React.Fragment>
 	    <div className="app-grid">
-	    	<div className="topbar">
-	    		<Topbar />
-	    	</div>
-	    	<div className="sidebar">
-	    		<Sidebar />
-	    	</div>
+	    	<SidebarProvider>
+		    	<div className="topbar">
+		    		<Topbar />
+		    	</div>
+		    	<div className="sidebar">
+		    		<Sidebar />
+		    	</div>
+	    	</SidebarProvider>
 	    	<div className="courosel">
 	    		<Courosel />
 	    	</div>
@@ -30,6 +33,9 @@ export default function App() {
 	    		<Todo name="Footer" />
 	    	</div>
 	    </div>
-	  </SidebarProvider>
+	  </React.Fragment>
   );
 }
+
+export default App;
+
