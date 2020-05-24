@@ -106,14 +106,16 @@ const Products = () => {
 	  	<ul id="products-list">
 	      <div className="products-grid">
 	    		{state.products.map((product, index) => 
-	    			<li key={index} id="product-element">
-	    				<img id="product-img" src={product.img} alt={product.name}/>
-	            <div className="product-text">
-	              <span id="product-price">${product.price}</span>
-	              <span id="product-name">{product.name}</span>
-	              <FaCartPlus id="product-icon" />
-	            </div>
-	    			</li>
+            <div className="products-slide-up">
+  	    			<li key={index} id="product-element">
+  	    				<img id="product-img" src={product.img} alt={product.name}/>
+  	            <div className="product-text">
+  	              <span id="product-price">${product.price}</span>
+  	              <span id="product-name">{product.name}</span>
+  	              <FaCartPlus id="product-icon" />
+  	            </div>
+  	    			</li>
+            </div>
 	    		)}
 	      </div>
 	  		{state.isLoading && <li id="loading-element"><Loading/></li>}
