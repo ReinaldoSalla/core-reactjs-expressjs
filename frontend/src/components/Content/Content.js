@@ -106,7 +106,7 @@ const Products = () => {
 	  	<ul id="products-list">
 	      <div className="products-grid">
 	    		{state.products.map((product, index) => 
-            <div className="products-slide-up">
+            <div key={index} className="products-slide-up">
   	    			<li key={index} id="product-element">
   	    				<img id="product-img" src={product.img} alt={product.name}/>
   	            <div className="product-text">

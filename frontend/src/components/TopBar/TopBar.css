@@ -1,0 +1,50 @@
+.top-bar-flexbox {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	padding: 10px;
+	margin: 2px;
+}
+
+.sidebar-icon-off {
+	color: white;
+	font-size: 40px;
+	transition-duration: var(--transition-time);
+}
+
+.sidebar-icon-on {
+	color: white;
+	font-size: 40px;
+	transition-duration: var(--transition-time);
+	transform: rotate(180deg);
+}
+
+.sidebar-icon-on:hover, .sidebar-icon-off:hover {
+	color: aqua;
+}
+
+.company-logo {
+	color: white;
+	font-size: 20px;
+}
+
+.input-search {
+	border-radius: 20px;
+	padding: 8px;
+	border: 10px;
+	width: 275px;
+	height: 25px;
+	background-color: rgba(235, 235, 235, 1);
+}
+
+.login-icon {
+	
+	color: white;
+	font-size: 40px;
+}
+
+.cart-icon {
+	color: white;
+	font-size: 40px;
+}
