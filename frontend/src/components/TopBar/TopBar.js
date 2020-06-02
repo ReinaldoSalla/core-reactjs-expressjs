@@ -1,9 +1,21 @@
 import React from "react";
-import { FaShoppingCart } from "react-icons/fa";
-import { BsLayoutTextSidebar } from "react-icons/bs"
-import { AiOutlineLogin } from "react-icons/ai";
-import SidebarContext from "../../context/SidebarContext/";
-import "./TopBar.css";
+import { 
+	FaShoppingCart,
+	FaCar,
+	FaBuilding
+} from "react-icons/fa";
+import { 
+	AiOutlineLogin, 
+	AiOutlineArrowRight 
+} from "react-icons/ai";
+import { 
+	GiSmartphone,
+	GiLoincloth,
+	GiHouse,
+	GiIsland
+} from "react-icons/gi";
+import { BsLayoutTextSidebar } from "react-icons/bs";
+import "./Topbar.css";
 
 function CompanyLogo() {
 	return (
@@ -17,22 +29,90 @@ function InputSearch() {
 	);
 }
 
-function TopBar() {
-	const { onOff, toggleSidebar } = React.useContext(SidebarContext);
+const SidebarContentItem = ({ leftIcon, text, rightIcon }) => (
+	<React.Fragment>
+		<div className="sidebar-content-item">
+			<span className="sidebar-content-left-icon">{leftIcon}</span>
+			<span className="sidebar-content-text">{text}</span>
+			<span className="sidebar-content-right-icon">{rightIcon}</span>
+		</div>
+		<hr />
+	</React.Fragment>
+);
+
+const SidebarContent = ({ contentClassName }) => (
+	<div className={contentClassName}>
+		<SidebarContentItem
+			leftIcon={<AiOutlineArrowRight />}
+			text="Eletronics"
+			rightIcon={<AiOutlineArrowRight />}
+		/> 
+		<SidebarContentItem
+			leftIcon={<GiLoincloth />}
+			text="Clothes"
+			rightIcon={<AiOutlineArrowRight />}
+		/>
+		<SidebarContentItem
+			leftIcon={<FaCar />}
+			text="Vehicles"
+			rightIcon={<AiOutlineArrowRight />}
+		/>
+		<SidebarContentItem
+			leftIcon={<FaBuilding />}
+			text="Apartments"
+			rightIcon={<AiOutlineArrowRight />}
+		/>
+		<SidebarContentItem
+			leftIcon={<GiHouse />}
+			text="Houses"
+			rightIcon={<AiOutlineArrowRight />}
+		/>
+		<SidebarContentItem
+			leftIcon={<GiIsland />}
+			text="Islands"
+			rightIcon={<AiOutlineArrowRight />}
+		/>
+	</div>
+);
+
+const Sidebar = () => {
+	const [isSidebarVisible, setIsSidebarVisible] = React.useState(true);
+	const iconClassName = isSidebarVisible 
+		? "sidebar-icon-on"
+		: "sidebar-icon-off";
+	const contentClassName = isSidebarVisible
+		? "sidebar-content-on" 
+		: "sidebar-content-off";
+
+	const toggleSidebar = () => setIsSidebarVisible(!isSidebarVisible);
+
 	return (
-		<React.Fragment>
-			<div className="top-bar-flexbox">
-				<BsLayoutTextSidebar 
-					className={`sidebar-icon-${onOff}`} 
-					onClick={toggleSidebar}
-				/>
-				<CompanyLogo />
-				<InputSearch />
-				<AiOutlineLogin className="login-icon" />
-				<FaShoppingCart className="cart-icon" />
-			</div>
-		</React.Fragment>
+		<div className="sidebar-icon-content">
+			<BsLayoutTextSidebar
+				className={iconClassName}
+				onClick={toggleSidebar}
+			/>
+			<SidebarContent contentClassName={contentClassName}/>
+		</div>
 	);
-}
+};
+
+const Login = () => (
+	<AiOutlineLogin className="login-icon" />
+);
+
+const Cart = () => (
+	<FaShoppingCart className="cart-icon" />
+);
+
+const TopBar = () => (
+	<div className="topbar-flexbox">
+		<Sidebar />
+		<CompanyLogo />
+		<InputSearch />
+		<Login />
+		<Cart />
+	</div>
+);
 
 export default TopBar;

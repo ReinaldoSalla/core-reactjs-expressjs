@@ -1,4 +1,6 @@
+/*
 .courosel {
+	margin-top: 150px;
 	overflow: hidden;
 	width: 1500px;
 	height: 400px;
@@ -73,4 +75,12 @@
 #first-input, #second-input, #third-input, #forth-input, #fifth-input {
 	position: absolute;
 	visibility: hidden;
+}
+*/
+
+.imgs {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 }
