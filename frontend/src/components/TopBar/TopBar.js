@@ -31,11 +31,11 @@ function InputSearch() {
 
 const SidebarContentItem = ({ leftIcon, text, rightIcon }) => (
 	<React.Fragment>
-		<a className="sidebar-content-item">
+		<div className="sidebar-content-item">
 			<span className="sidebar-content-left-icon">{leftIcon}</span>
 			<span className="sidebar-content-text">{text}</span>
 			<span className="sidebar-content-right-icon">{rightIcon}</span>
-		</a>
+		</div>
 		<hr />
 	</React.Fragment>
 );
