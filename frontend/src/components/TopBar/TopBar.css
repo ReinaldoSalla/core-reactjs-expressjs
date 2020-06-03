@@ -1,3 +1,7 @@
+:root {
+	--sidebar-content-item-size: 20px;
+}
+
 .topbar-flexbox {
 	background-color: black;
 	position: fixed;
@@ -38,25 +42,26 @@
 	background-color: black;
 	top: 60px;
 	height: 500px;
-	width: 300px;
+	width: 250px;
 	padding: 10px;
 }
 
 .sidebar-content-on {
 	transition: left 1000ms;
-	left: -10px;
+	left: -80px;
 }
 
 .sidebar-content-off {
 	transition: left 1000ms;
-	left: -300px;
+	left: -400px;
 }
 
 .sidebar-content-item {
 	padding: 10px;
+	height: 20px;
 	display: flex;
 	flex-direction: row;
-	align-items: flex-end; /*???*/
+	align-items: flex-start; 
 }
 
 .sidebar-content-item:hover {
@@ -65,21 +70,23 @@
 }
 
 .sidebar-content-left-icon > svg {
-	font-size: 25px;
+	font-size: var(--sidebar-content-item-size);
 	color: white;
-	margin-right: 30px;
 }
 
 .sidebar-content-text {
 	color: white;
-	font-size: 25px;
+	font-size: var(--sidebar-content-item-size);
+	position: absolute;
+	left: 70px;
+	transform: translateY(-10%);
 }
 
-.sidebar-content-right-icon {
+.sidebar-content-right-icon > svg {
 	color: white;
-	font-size: 25px;
+	font-size: var(--sidebar-content-item-size);
 	position: absolute;
-	right: 15px;
+	left: 200px;
 }
 
 .company-logo {

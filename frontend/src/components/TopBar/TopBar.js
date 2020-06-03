@@ -31,11 +31,11 @@ function InputSearch() {
 
 const SidebarContentItem = ({ leftIcon, text, rightIcon }) => (
 	<React.Fragment>
-		<div className="sidebar-content-item">
+		<a className="sidebar-content-item">
 			<span className="sidebar-content-left-icon">{leftIcon}</span>
 			<span className="sidebar-content-text">{text}</span>
 			<span className="sidebar-content-right-icon">{rightIcon}</span>
-		</div>
+		</a>
 		<hr />
 	</React.Fragment>
 );
@@ -43,7 +43,7 @@ const SidebarContentItem = ({ leftIcon, text, rightIcon }) => (
 const SidebarContent = ({ contentClassName }) => (
 	<div className={contentClassName}>
 		<SidebarContentItem
-			leftIcon={<AiOutlineArrowRight />}
+			leftIcon={<GiSmartphone />}
 			text="Eletronics"
 			rightIcon={<AiOutlineArrowRight />}
 		/> 
@@ -76,7 +76,7 @@ const SidebarContent = ({ contentClassName }) => (
 );
 
 const Sidebar = () => {
-	const [isSidebarVisible, setIsSidebarVisible] = React.useState(true);
+	const [isSidebarVisible, setIsSidebarVisible] = React.useState(false);
 	const iconClassName = isSidebarVisible 
 		? "sidebar-icon-on"
 		: "sidebar-icon-off";
