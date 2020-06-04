@@ -4,14 +4,3 @@ body {
   margin: 0;
   padding: 0;
 }
-
-.topbar {
-  background-color: rgba(25, 25, 25, 1);
-  border-radius: 20px;
-  border: 1px solid black;
-}
-
-.sidebar {
-  position: absolute;
-  margin-top: 100px;
-}

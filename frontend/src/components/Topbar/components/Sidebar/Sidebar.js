@@ -20,64 +20,123 @@ const baseline = {
 	vehicles: "vehicles-off",
 	apartments: "apartments-off",
 	houses: "houses-off",
-	islands: "islands-off"
+	islands: "islands-off",
+	height: null
 };
 
-const init = () => ({
+const menuPrimary = {
 	...baseline,
-	primary: "primary-off"
+	primary: "primary-on"
+};
+
+const menuElectronics = {
+	...baseline,
+	electronics: "electronics-on"
+};
+
+const menuClothes = {
+	...baseline,
+	vehicles: "vehicles-on"
+};
+
+const menuApartments = {
+	...baseline,
+	apartments: "apartments-on"
+};
+
+const menuHouses = {
+	...baseline,
+	houses: "houses"
+};
+
+const menuIslands = {
+	...baseline,
+	islands: "islands-on"
+};
+
+const changeHeight = action => ({
+	...baseline,
+	height: action.payload
 });
 
 const reducer = (state, action) => {
+	switch (action.type) {
+		case "CHANGE_HEIGHT":
+			return changeHeight(action);
+		default:
+			throw new ReferenceError(`Action type ${action.type} is not defined`);
+	}
+};
 
-}
+const DivisibleHr = ({ divisible }) => (
+	divisible ? <hr /> : null
+);
 
-const SidebarContentItem = ({ leftIcon, text, rightIcon }) => (
+const SidebarContentItem = ({ leftIcon, text, rightIcon, divisible=true }) => (
 	<React.Fragment>
 		<a href="/#" className="sidebar-content-item">
 			<span className="sidebar-content-left-icon">{leftIcon}</span>
 			<span className="sidebar-content-text">{text}</span>
 			<span className="sidebar-content-right-icon">{rightIcon}</span>
 		</a>
-		<hr />
+		<DivisibleHr divisible={divisible} />
 	</React.Fragment>
 );
 
+const SidebarPrimary = () => (
+	<div>
+		<SidebarContentItem
+			leftIcon={<GiSmartphone />}
+			text="Eletronics"
+			rightIcon={<AiOutlineArrowRight />}
+		/> 
+		<SidebarContentItem
+			leftIcon={<GiLoincloth />}
+			text="Clothes"
+			rightIcon={<AiOutlineArrowRight />}
+		/>
+		<SidebarContentItem
+			leftIcon={<FaCar />}
+			text="Vehicles"
+			rightIcon={<AiOutlineArrowRight />}
+		/>
+		<SidebarContentItem
+			leftIcon={<FaBuilding />}
+			text="Apartments"
+			rightIcon={<AiOutlineArrowRight />}
+		/>
+		<SidebarContentItem
+			leftIcon={<GiHouse />}
+			text="Houses"
+			rightIcon={<AiOutlineArrowRight />}
+		/>
+		<SidebarContentItem
+			leftIcon={<GiIsland />}
+			text="Islands"
+			rightIcon={<AiOutlineArrowRight />}
+			divisible={false}
+		/>
+	</div>
+);
+
 const SidebarContent = ({ contentClassName }) => {
-	
+	const [state, dispatch] = React.useReducer(reducer, menuPrimary);
+	const sidebarContentRef = React.useRef(null);
+
+	React.useEffect(() => {
+		dispatch({
+			type: "CHANGE_HEIGHT",
+			payload: sidebarContentRef.current?.firstChild.offsetHeight
+		});
+	}, []);
 
 	return (
-		<div className={contentClassName}>
-			<SidebarContentItem
-				leftIcon={<GiSmartphone />}
-				text="Eletronics"
-				rightIcon={<AiOutlineArrowRight />}
-			/> 
-			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Clothes"
-				rightIcon={<AiOutlineArrowRight />}
-			/>
-			<SidebarContentItem
-				leftIcon={<FaCar />}
-				text="Vehicles"
-				rightIcon={<AiOutlineArrowRight />}
-			/>
-			<SidebarContentItem
-				leftIcon={<FaBuilding />}
-				text="Apartments"
-				rightIcon={<AiOutlineArrowRight />}
-			/>
-			<SidebarContentItem
-				leftIcon={<GiHouse />}
-				text="Houses"
-				rightIcon={<AiOutlineArrowRight />}
-			/>
-			<SidebarContentItem
-				leftIcon={<GiIsland />}
-				text="Islands"
-				rightIcon={<AiOutlineArrowRight />}
-			/>
+		<div 
+			ref={sidebarContentRef}
+			className={contentClassName}
+			style={{ height: state.height }}
+		>
+			<SidebarPrimary />
 		</div>
 	);
 };
