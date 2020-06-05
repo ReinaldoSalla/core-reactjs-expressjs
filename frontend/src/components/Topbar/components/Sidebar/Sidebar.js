@@ -17,9 +17,55 @@ import {
 	GiHouse,
 	GiIsland
 } from "react-icons/gi";
-import {  AiOutlineArrowRight } from "react-icons/ai";
+import {  
+	AiOutlineArrowRight,
+	AiOutlineArrowLeft 
+} from "react-icons/ai";
 import { BsLayoutTextSidebar } from "react-icons/bs";
 import "./Sidebar.css";
+
+const LeftIcon = ({ leftIcon }) => (
+	<span className="sidebar-content-left-icon">
+		{leftIcon}
+	</span>
+);
+
+const MiddleText = ({ text }) => (
+	<span className="sidebar-content-text">
+		{text}
+	</span>
+);
+
+const OptionalRightIcon = ({ rightIcon }) => (
+	rightIcon 
+		? <span className="sidebar-content-right-icon">{rightIcon}</span>
+		: null
+);
+
+const DivisibleHr = ({ divisible }) => (
+	divisible ? <hr /> : null
+);
+
+const SidebarContentItem = ({ 
+	leftIcon, 
+	text, 
+	rightIcon, 
+	moveToMenu,
+	divisible=true 
+}) => (
+	<Fragment>
+		<a 
+			href="/#" 
+			className="sidebar-content-item"
+			onClick={moveToMenu}
+		>
+			<LeftIcon leftIcon={leftIcon}/>
+			<MiddleText text={text} />
+			<OptionalRightIcon rightIcon={rightIcon}/>
+		</a>
+		<DivisibleHr divisible={divisible} />
+	</Fragment>
+);
 
 const reference = {
 	primary: "primary-off",
@@ -81,6 +127,7 @@ const moveToIslands = action => ({
 
 const setInitialHeight = action => ({
 	...reference,
+	primary: "primary-on",
 	height: action.payload
 });
 
@@ -107,62 +154,78 @@ const reducer = (state, action) => {
 	}
 };
 
-const DivisibleHr = ({ divisible }) => (
-	divisible ? <hr /> : null
-);
-
-const SidebarContentItem = ({ 
-	leftIcon, 
-	text, 
-	rightIcon, 
-	menu,
-	divisible=true 
-}) => (
-	<Fragment>
-		<a 
-			href="/#" 
-			className="sidebar-content-item"
-		>
-			<span className="sidebar-content-left-icon">{leftIcon}</span>
-			<span className="sidebar-content-text">{text}</span>
-			<span className="sidebar-content-right-icon">{rightIcon}</span>
-		</a>
-		<DivisibleHr divisible={divisible} />
-	</Fragment>
-);
-
 const SidebarContentContext = createContext();
 
 const SidebarContentProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
+	const sidebarContentRef = useRef(null);
+	const primaryRef = useRef(null);
+	const electronicsRef = useRef(null);
+	const clothesRef = useRef(null);
+	const vehiclesRef = useRef(null);
+	const apartmentsRef = useRef(null);
+	const housesRef = useRef(null);
+	const islandsRef = useRef(null);
 
 	const moveToPrimary = () => 
-		dispatch({ type: "SET_INITIAL_HEIGHT" });
+		dispatch({ 
+			type: "MOVE_TO_PRIMARY",
+			payload: primaryRef.current.offsetHeight 
+		});
 
 	const moveToElectronics = () => 
-		dispatch({ type: "MOVE_TO_ELECTRONICS" });
+		dispatch({ 
+			type: "MOVE_TO_ELECTRONICS",
+			payload: electronicsRef.current.offsetHeight
+		});
 
-	const moveToClothes = () =>
-		dispatch({ type: "MOVE_TO_CLOTHES" });
+	const moveToClothes = offsetHeight =>
+		dispatch({ 
+			type: "MOVE_TO_CLOTHES",
+			payload: offsetHeight 
+		});
 
-	const moveToVehicles = () =>
-		dispatch({ type: "MOVE_TO_VEHICLES" });
+	const moveToVehicles = offsetHeight =>
+		dispatch({ 
+			type: "MOVE_TO_VEHICLES",
+			payload: offsetHeight
+		});
 
-	const moveToApartments = () => 
-		dispatch({ type: "MOVE_TO_APARMENTS" });
+	const moveToApartments = offsetHeight => 
+		dispatch({ 
+			type: "MOVE_TO_APARMENTS",
+			payload: offsetHeight 
+		});
 
-	const moveToHouses = () => 
-		dispatch({ type: "MOVE_TO_HOUSES" });
+	const moveToHouses = offsetHeight => 
+		dispatch({ 
+			type: "MOVE_TO_HOUSES",
+			payload: offsetHeight 
+		});
 
-	const moveToIslands = () => 
-		dispatch({ type: "MOVE_TO_ISLANDS" });
+	const moveToIslands = offsetHeight => 
+		dispatch({ 
+			type: "MOVE_TO_ISLANDS",
+			payload: offsetHeight 
+		});
 
-	const setInitialHeight = offsetHeight =>
-		dispatch({ type: "SET_INITIAL_HEIGHT", payload: offsetHeight });
+	const setInitialHeight = () =>
+		dispatch({ 
+			type: "SET_INITIAL_HEIGHT",
+			payload: sidebarContentRef.current?.firstChild.offsetHeight 
+		});
+
+	useEffect(() => {
+		setInitialHeight();
+	}, []);
 
 	const value = {
 		state,
+		primary: state.primary,
+		electronics: state.electronics,
 		height: state.height,
+		primaryRef,
+		electronicsRef,
 		moveToPrimary,
 		moveToElectronics,
 		moveToClothes,
@@ -170,7 +233,7 @@ const SidebarContentProvider = ({ children }) => {
 		moveToApartments,
 		moveToHouses,
 		moveToIslands,
-		setInitialHeight
+		sidebarContentRef
 	};
 
 	return (
@@ -180,11 +243,10 @@ const SidebarContentProvider = ({ children }) => {
 	);
 };
 
-
 const SidebarContentPrimary = () => {
 	const {
-		state,
-		moveToPrimary,
+		primary,
+		primaryRef,
 		moveToElectronics,
 		moveToClothes,
 		moveToVehicles,
@@ -194,11 +256,15 @@ const SidebarContentPrimary = () => {
 	} = useContext(SidebarContentContext);
 
 	return (
-		<div className={state.primary}>
+		<div 
+			className={primary}
+			ref={primaryRef}
+		>
 			<SidebarContentItem
 				leftIcon={<GiSmartphone />}
 				text="Eletronics"
 				rightIcon={<AiOutlineArrowRight />}
+				moveToMenu={moveToElectronics}
 			/> 
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
@@ -230,13 +296,65 @@ const SidebarContentPrimary = () => {
 	);
 };
 
-const SidebarContent = ({ contentClassName }) => {
-	const { height, setInitialHeight } = useContext(SidebarContentContext);
-	const sidebarContentRef = useRef(null);
+const SidebarContentElectronics = () => {
+	const { 
+		electronics, 
+		electronicsRef,
+		moveToPrimary 
+	} = useContext(SidebarContentContext);
 
-	useEffect(() => {
-		setInitialHeight(sidebarContentRef.current?.firstChild.offsetHeight);
-	}, []);
+	return (
+		<div 
+			className={electronics}
+			ref={electronicsRef}
+		>
+			<SidebarContentItem
+				leftIcon={<AiOutlineArrowLeft />}
+				text="Return"
+				moveToMenu={moveToPrimary}
+			/>
+			<SidebarContentItem
+				leftIcon={<GiSmartphone />}
+				text="Electronic1"
+			/> 
+			<SidebarContentItem
+				leftIcon={<GiSmartphone />}
+				text="Electronic2"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiSmartphone />}
+				text="Electronic2"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiSmartphone />}
+				text="Electronic4"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiSmartphone />}
+				text="Electronic5"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiSmartphone />}
+				text="Electronics6"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiSmartphone />}
+				text="Electronics7"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiSmartphone />}
+				text="Electronics8"
+				divisible={false}
+			/>
+		</div>
+	);
+};
+
+const SidebarContent = ({ contentClassName }) => {
+	const { state, height, sidebarContentRef } = useContext(SidebarContentContext);
+
+	console.log("SidebarContent");
+	console.log(state);
 
 	return (
 		<div 
@@ -245,6 +363,7 @@ const SidebarContent = ({ contentClassName }) => {
 			style={{ height: height }}
 		>
 			<SidebarContentPrimary />
+			<SidebarContentElectronics />
 		</div>
 	);
 };
