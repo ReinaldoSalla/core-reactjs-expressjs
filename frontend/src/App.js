@@ -17,17 +17,10 @@ const Divs = () => {
 	);
 };
 
-const Br = () => (
-	<React.Fragment>
-		<br /> <br /> <br /> <br /> <br />
-	</React.Fragment>
-);
-
 const App = () => {
 	return (
 		<React.Fragment>
 			<Topbar /> 
-			<Br />
 			<Courosel />
 			<Divs />
 		</React.Fragment>
