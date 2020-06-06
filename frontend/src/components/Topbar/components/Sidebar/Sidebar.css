@@ -1,3 +1,6 @@
+:root {
+	--sidebar-content-item-size: 20px;
+}
 
 .sidebar-icon-off {
 	color: white;

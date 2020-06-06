@@ -179,34 +179,34 @@ const SidebarContentProvider = ({ children }) => {
 			payload: electronicsRef.current.offsetHeight
 		});
 
-	const moveToClothes = offsetHeight =>
+	const moveToClothes = () =>
 		dispatch({ 
 			type: "MOVE_TO_CLOTHES",
-			payload: offsetHeight 
+			payload: clothesRef.current.offsetHeight 
 		});
 
-	const moveToVehicles = offsetHeight =>
+	const moveToVehicles = () =>
 		dispatch({ 
 			type: "MOVE_TO_VEHICLES",
-			payload: offsetHeight
+			payload: vehiclesRef.current.offsetHeight
 		});
 
-	const moveToApartments = offsetHeight => 
+	const moveToApartments = () => 
 		dispatch({ 
-			type: "MOVE_TO_APARMENTS",
-			payload: offsetHeight 
+			type: "MOVE_TO_APARTMENTS",
+			payload: apartmentsRef.current.offsetHeight 
 		});
 
-	const moveToHouses = offsetHeight => 
+	const moveToHouses = () => 
 		dispatch({ 
 			type: "MOVE_TO_HOUSES",
-			payload: offsetHeight 
+			payload: housesRef.current.offsetHeight 
 		});
 
-	const moveToIslands = offsetHeight => 
+	const moveToIslands = () => 
 		dispatch({ 
 			type: "MOVE_TO_ISLANDS",
-			payload: offsetHeight 
+			payload: islandsRef.current.offsetHeight 
 		});
 
 	const setInitialHeight = () =>
@@ -221,11 +221,21 @@ const SidebarContentProvider = ({ children }) => {
 
 	const value = {
 		state,
-		primary: state.primary,
-		electronics: state.electronics,
+		primaryClassName: state.primary,
+		electronicsClassName: state.electronics,
+		clothesClassName: state.clothes,
+		vehiclesClassName: state.vehicles,
+		apartmentsClassName: state.apartments,
+		housesClassName: state.houses,
+		islandsClassName: state.islands,
 		height: state.height,
 		primaryRef,
 		electronicsRef,
+		clothesRef,
+		vehiclesRef,
+		apartmentsRef,
+		housesRef,
+		islandsRef,
 		moveToPrimary,
 		moveToElectronics,
 		moveToClothes,
@@ -245,19 +255,19 @@ const SidebarContentProvider = ({ children }) => {
 
 const SidebarContentPrimary = () => {
 	const {
-		primary,
+		primaryClassName,
 		primaryRef,
 		moveToElectronics,
 		moveToClothes,
 		moveToVehicles,
-		moveToAparments,
+		moveToApartments,
 		moveToHouses,
 		moveToIslands,
 	} = useContext(SidebarContentContext);
 
 	return (
 		<div 
-			className={primary}
+			className={primaryClassName}
 			ref={primaryRef}
 		>
 			<SidebarContentItem
@@ -270,26 +280,31 @@ const SidebarContentPrimary = () => {
 				leftIcon={<GiLoincloth />}
 				text="Clothes"
 				rightIcon={<AiOutlineArrowRight />}
+				moveToMenu={moveToClothes}
 			/>
 			<SidebarContentItem
 				leftIcon={<FaCar />}
 				text="Vehicles"
 				rightIcon={<AiOutlineArrowRight />}
+				moveToMenu={moveToVehicles}
 			/>
 			<SidebarContentItem
 				leftIcon={<FaBuilding />}
 				text="Apartments"
 				rightIcon={<AiOutlineArrowRight />}
+				moveToMenu={moveToApartments}
 			/>
 			<SidebarContentItem
 				leftIcon={<GiHouse />}
 				text="Houses"
 				rightIcon={<AiOutlineArrowRight />}
+				moveToMenu={moveToHouses}
 			/>
 			<SidebarContentItem
 				leftIcon={<GiIsland />}
 				text="Islands"
 				rightIcon={<AiOutlineArrowRight />}
+				moveToMenu={moveToIslands}
 				divisible={false}
 			/>
 		</div>
@@ -298,14 +313,14 @@ const SidebarContentPrimary = () => {
 
 const SidebarContentElectronics = () => {
 	const { 
-		electronics, 
+		electronicsClassName, 
 		electronicsRef,
 		moveToPrimary 
 	} = useContext(SidebarContentContext);
 
 	return (
 		<div 
-			className={electronics}
+			className={electronicsClassName}
 			ref={electronicsRef}
 		>
 			<SidebarContentItem
@@ -350,6 +365,276 @@ const SidebarContentElectronics = () => {
 	);
 };
 
+const SidebarContentClothes = () => {
+	const {
+		clothesClassName,
+		clothesRef,
+		moveToPrimary
+	} = useContext(SidebarContentContext);
+
+	return (
+		<div 
+			className={clothesClassName}
+			ref={clothesRef}
+		>
+			<SidebarContentItem
+				leftIcon={<AiOutlineArrowLeft />}
+				text="Return"
+				moveToMenu={moveToPrimary}
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth1"
+			/> 
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth2"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth2"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth4"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth5"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth6"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth7"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth8"
+				divisible={false}
+			/>
+		</div>
+	);
+};
+
+const SidebarContentVehicles = () => {
+	const {
+		vehiclesClassName,
+		vehiclesRef,
+		moveToPrimary
+	} = useContext(SidebarContentContext);
+
+	return (
+		<div 
+			className={vehiclesClassName}
+			ref={vehiclesRef}
+		>
+			<SidebarContentItem
+				leftIcon={<AiOutlineArrowLeft />}
+				text="Return"
+				moveToMenu={moveToPrimary}
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth1"
+			/> 
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth2"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth2"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth4"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth5"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth6"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth7"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth8"
+				divisible={false}
+			/>
+		</div>
+	);
+};
+
+const SidebarContentApartments = () => {
+	const {
+		apartmentsClassName,
+		apartmentsRef,
+		moveToPrimary
+	} = useContext(SidebarContentContext);
+
+	return (
+		<div 
+			className={apartmentsClassName}
+			ref={apartmentsRef}
+		>
+			<SidebarContentItem
+				leftIcon={<AiOutlineArrowLeft />}
+				text="Return"
+				moveToMenu={moveToPrimary}
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth1"
+			/> 
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth2"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth2"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth4"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth5"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth6"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth7"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth8"
+				divisible={false}
+			/>
+		</div>
+	);
+};
+
+const SidebarContentHouses = () => {
+	const {
+		housesClassName,
+		housesRef,
+		moveToPrimary
+	} = useContext(SidebarContentContext);
+
+	return (
+		<div 
+			className={housesClassName}
+			ref={housesRef}
+		>
+			<SidebarContentItem
+				leftIcon={<AiOutlineArrowLeft />}
+				text="Return"
+				moveToMenu={moveToPrimary}
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth1"
+			/> 
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth2"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth2"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth4"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth5"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth6"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth7"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth8"
+				divisible={false}
+			/>
+		</div>
+	);
+};
+
+const SidebarContentIslands = () => {
+	const {
+		islandsClassName,
+		islandsRef,
+		moveToPrimary
+	} = useContext(SidebarContentContext);
+
+	return (
+		<div 
+			className={islandsClassName}
+			ref={islandsRef}
+		>
+			<SidebarContentItem
+				leftIcon={<AiOutlineArrowLeft />}
+				text="Return"
+				moveToMenu={moveToPrimary}
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth1"
+			/> 
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth2"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth2"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth4"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth5"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth6"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth7"
+			/>
+			<SidebarContentItem
+				leftIcon={<GiLoincloth />}
+				text="Cloth8"
+				divisible={false}
+			/>
+		</div>
+	);
+};
+
 const SidebarContent = ({ contentClassName }) => {
 	const { state, height, sidebarContentRef } = useContext(SidebarContentContext);
 
@@ -364,6 +649,11 @@ const SidebarContent = ({ contentClassName }) => {
 		>
 			<SidebarContentPrimary />
 			<SidebarContentElectronics />
+			<SidebarContentClothes />
+			<SidebarContentVehicles />
+			<SidebarContentApartments />
+			<SidebarContentHouses />
+			<SidebarContentIslands />
 		</div>
 	);
 };
