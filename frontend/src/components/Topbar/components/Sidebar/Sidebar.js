@@ -51,21 +51,28 @@ const SidebarContentItem = ({
 	text, 
 	rightIcon, 
 	moveToMenu,
+	reduce=false,
 	divisible=true 
-}) => (
-	<Fragment>
-		<a 
-			href="/#" 
-			className="sidebar-content-item"
-			onClick={moveToMenu}
-		>
-			<LeftIcon leftIcon={leftIcon}/>
-			<MiddleText text={text} />
-			<OptionalRightIcon rightIcon={rightIcon}/>
-		</a>
-		<DivisibleHr divisible={divisible} />
-	</Fragment>
-);
+}) => {
+	const className = reduce
+		? "sidebar-content-item-reduced"
+		: "sidebar-content-item"
+
+	return (
+		<Fragment>
+			<a 
+				href="/#" 
+				className={className}
+				onClick={moveToMenu}
+			>
+				<LeftIcon leftIcon={leftIcon}/>
+				<MiddleText text={text} />
+				<OptionalRightIcon rightIcon={rightIcon}/>
+			</a>
+			<DivisibleHr divisible={divisible} />
+		</Fragment>
+	);
+};
 
 const reference = {
 	primary: "primary-off",
@@ -220,7 +227,6 @@ const SidebarContentProvider = ({ children }) => {
 	}, []);
 
 	const value = {
-		state,
 		primaryClassName: state.primary,
 		electronicsClassName: state.electronics,
 		clothesClassName: state.clothes,
@@ -381,38 +387,47 @@ const SidebarContentClothes = () => {
 				leftIcon={<AiOutlineArrowLeft />}
 				text="Return"
 				moveToMenu={moveToPrimary}
+				reduce={true}
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
 				text="Cloth1"
+				reduce={true}
 			/> 
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
 				text="Cloth2"
+				reduce={true}
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
 				text="Cloth2"
+				reduce={true}
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
 				text="Cloth4"
+				reduce={true}
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
 				text="Cloth5"
+				reduce={true}
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
 				text="Cloth6"
+				reduce={true}
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
 				text="Cloth7"
+				reduce={true}
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
 				text="Cloth8"
+				reduce={true}
 				divisible={false}
 			/>
 		</div>
@@ -636,10 +651,7 @@ const SidebarContentIslands = () => {
 };
 
 const SidebarContent = ({ contentClassName }) => {
-	const { state, height, sidebarContentRef } = useContext(SidebarContentContext);
-
-	console.log("SidebarContent");
-	console.log(state);
+	const { height, sidebarContentRef } = useContext(SidebarContentContext);
 
 	return (
 		<div 

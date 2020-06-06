@@ -44,16 +44,20 @@
 	left: -80px;
 }
 
-.sidebar-content-item {
+.sidebar-content-item, .sidebar-content-item-reduced {
 	padding: 10px;
 	height: 20px;
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start; 
-	width: 180px;
+	width: 180px;	
 }
 
-.sidebar-content-item:hover {
+.sidebar-content-item-reduced {
+	justify-content: space-around;
+}
+
+.sidebar-content-item:hover, .sidebar-content-item-reduced:hover {
 	background-color: gray;
 	cursor: pointer;
 }
