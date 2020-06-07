@@ -1,8 +1,14 @@
 import React, { 
 	useEffect,
-	useState,
-	Fragment
+	useState
 } from "react";
+import "./Trending.css";
+
+const Title = ({ title }) => (
+	<h1 className="trending-title">
+		{title}
+	</h1>
+);
 
 const Loading = () => <h1>Loading</h1>;
 
@@ -10,7 +16,7 @@ const Product = ({ name, price }) => (
 	<li> 
 		{name}, {price} 
 	</li>
-)
+);
 
 const ListProducts = ({ products }) => (
 	products.map((product, index) => 
@@ -22,13 +28,11 @@ const ListProducts = ({ products }) => (
 	)
 );
 
-const Products = ({ products }) => {
-	return (
-		<ul> 
-			<ListProducts products={products} /> 
-		</ul>
-	);
-};
+const Products = ({ products }) => (
+	<ul> 
+		<ListProducts products={products} /> 
+	</ul>
+);
 
 const Loader = ({ isLoading, products }) => (
 	isLoading 
@@ -36,7 +40,7 @@ const Loader = ({ isLoading, products }) => (
 		: <Products products={products}/>
 );
 
-const ApiTester = () => {
+const Trending = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [products, setProducts] = useState(null);
 
@@ -51,11 +55,12 @@ const ApiTester = () => {
 	}, []);
 
 	return (
-		<Fragment>
+		<div className="trending">
+			<Title title="Trending" />
 			<Loader isLoading={isLoading} products={products}/>
-		</Fragment>
+		</div>
 	)
 };
 
-export default ApiTester;
+export default Trending;
 
