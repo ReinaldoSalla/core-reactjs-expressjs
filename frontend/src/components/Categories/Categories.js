@@ -19,8 +19,10 @@ const Title = () => (
 
 const Category = ({ text, icon }) => (
 	<div className="category">
+		{/*
 		<span className="category-text">{text}</span>
 		<span className="category-icon">{icon}</span>
+		*/}
 	</div>
 );
 
