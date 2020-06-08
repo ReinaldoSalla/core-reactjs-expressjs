@@ -1,6 +1,7 @@
 import React, { 
 	useEffect,
-	useState
+	useState,
+	Fragment
 } from "react";
 import "./Trending.css";
 
@@ -10,12 +11,26 @@ const Title = ({ title }) => (
 	</h1>
 );
 
-const Loading = () => <h1>Loading</h1>;
+const Loading = () => (
+	<h1 className="loading">
+		Loading
+	</h1>
+);
 
-const Product = ({ name, price }) => (
-	<li> 
-		{name}, {price} 
-	</li>
+const calcInstallments = price => (price / 5).toFixed(2);
+
+const Product = ({ name, price, img }) => (
+	<div className="product-container">
+		<span className="product-name">{name}</span>
+		<img className="product-img" src={img} alt={name}/>
+		<span className="product-price">
+			${price} 
+			<span className="product-installment">
+				or 5x ${calcInstallments(price)}
+			</span>
+		</span>
+		<span className="product-add">Add to cart</span>
+	</div>
 );
 
 const ListProducts = ({ products }) => (
@@ -24,14 +39,15 @@ const ListProducts = ({ products }) => (
 			key={index} 
 			name={product.name} 
 			price={product.price}
+			img={product.img}
 		/>
 	)
 );
 
 const Products = ({ products }) => (
-	<ul> 
+	<div className="products"> 
 		<ListProducts products={products} /> 
-	</ul>
+	</div>
 );
 
 const Loader = ({ isLoading, products }) => (
