@@ -9,11 +9,9 @@ import "./App.css"
 const App = () => {
 	return (
 		<Fragment>
-			{/*
 			<Topbar />
 			<Courosel />
-			<Trending />
-			*/}
+			{/*<Trending />*/}
 			<Categories />
 		</Fragment>
 	);

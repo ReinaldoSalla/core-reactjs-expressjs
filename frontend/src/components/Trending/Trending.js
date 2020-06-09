@@ -1,7 +1,6 @@
 import React, { 
 	useEffect,
-	useState,
-	Fragment
+	useState
 } from "react";
 import "./Trending.css";
 

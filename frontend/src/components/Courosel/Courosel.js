@@ -236,7 +236,7 @@ import "./Courosel.css";
 const App = () => (
 	<div className="imgs">
 		<img 
-			src="https://preview.ibb.co/j8nRCQ/fashion2.jpg"
+			src="https://webassets.mongodb.com/_com_assets/cms/Charts@2x-drcescso5j-4otwc4gwte.png"
 			alt=""
 		/>
 	</div>

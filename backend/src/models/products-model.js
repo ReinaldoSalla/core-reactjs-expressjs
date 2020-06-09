@@ -7,7 +7,7 @@ const data = [
     price: 16.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/kOhL6k/img1.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -18,7 +18,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/nNmKz5/img2.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -29,7 +29,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/n6iMCQ/img3.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -40,7 +40,7 @@ const data = [
     price: 20.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dVfORk/img4.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -51,7 +51,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/jpMxmk/img5.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -62,7 +62,7 @@ const data = [
     price: 19.99,
     gender: "women",
     type: "blouse",
-    img: "https://image.ibb.co/mJppz5/img6.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -73,7 +73,7 @@ const data = [
     price: 6.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/eZiSmk/img7.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -84,7 +84,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dyCysQ/img8.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -95,7 +95,7 @@ const data = [
     price: 20.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/eOYre5/img10.jpg",
+    img: imgUrl",
     inCart: false,
     category: "clothes"
   },
@@ -106,7 +106,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/f6gcK5/img9.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -117,7 +117,7 @@ const data = [
     price: 45.99,
     gender: "women",
     type: "watch",
-    img: "https://images.pexels.com/photos/69046/watch-wrist-watch-packshot-time-69046.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    img: imgUrl6/watch-wrist-watch-packshot-time-69046.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
     inCart: false,
     category: "accessories"
   },
@@ -128,7 +128,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "necklace",
-    img: "https://images.pexels.com/photos/221550/pexels-photo-221550.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    img: imgUrl50/pexels-photo-221550.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
     inCart: false,
     category: "accessories"
   },
@@ -139,7 +139,7 @@ const data = [
     price: 16.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/kOhL6k/img1.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -150,7 +150,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/nNmKz5/img2.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -161,7 +161,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/n6iMCQ/img3.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -172,7 +172,7 @@ const data = [
     price: 20.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dVfORk/img4.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -183,7 +183,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/jpMxmk/img5.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -194,7 +194,7 @@ const data = [
     price: 19.99,
     gender: "women",
     type: "blouse",
-    img: "https://image.ibb.co/mJppz5/img6.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -205,7 +205,7 @@ const data = [
     price: 6.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/eZiSmk/img7.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -216,7 +216,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dyCysQ/img8.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -227,7 +227,7 @@ const data = [
     price: 20.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/eOYre5/img10.jpg",
+    img: imgUrl",
     inCart: false,
     category: "clothes"
   },
@@ -238,7 +238,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/f6gcK5/img9.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -249,7 +249,7 @@ const data = [
     price: 45.99,
     gender: "women",
     type: "watch",
-    img: "https://images.pexels.com/photos/69046/watch-wrist-watch-packshot-time-69046.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    img: imgUrl6/watch-wrist-watch-packshot-time-69046.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
     inCart: false,
     category: "accessories"
   },
@@ -260,7 +260,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "necklace",
-    img: "https://images.pexels.com/photos/221550/pexels-photo-221550.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    img: imgUrl50/pexels-photo-221550.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
     inCart: false,
     category: "accessories"
   },
@@ -271,7 +271,7 @@ const data = [
     price: 16.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/kOhL6k/img1.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -282,7 +282,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/nNmKz5/img2.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -293,7 +293,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/n6iMCQ/img3.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -304,7 +304,7 @@ const data = [
     price: 20.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dVfORk/img4.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -315,7 +315,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/jpMxmk/img5.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -326,7 +326,7 @@ const data = [
     price: 19.99,
     gender: "women",
     type: "blouse",
-    img: "https://image.ibb.co/mJppz5/img6.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -337,7 +337,7 @@ const data = [
     price: 6.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/eZiSmk/img7.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -348,7 +348,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dyCysQ/img8.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -359,7 +359,7 @@ const data = [
     price: 20.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/eOYre5/img10.jpg",
+    img: imgUrl",
     inCart: false,
     category: "clothes"
   },
@@ -370,7 +370,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/f6gcK5/img9.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -381,7 +381,7 @@ const data = [
     price: 45.99,
     gender: "women",
     type: "watch",
-    img: "https://images.pexels.com/photos/69046/watch-wrist-watch-packshot-time-69046.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    img: imgUrl6/watch-wrist-watch-packshot-time-69046.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
     inCart: false,
     category: "accessories"
   },
@@ -392,7 +392,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "necklace",
-    img: "https://images.pexels.com/photos/221550/pexels-photo-221550.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    img: imgUrl50/pexels-photo-221550.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
     inCart: false,
     category: "accessories"
   },
@@ -403,7 +403,7 @@ const data = [
     price: 16.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/kOhL6k/img1.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -414,7 +414,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/nNmKz5/img2.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -425,7 +425,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/n6iMCQ/img3.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -436,7 +436,7 @@ const data = [
     price: 20.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dVfORk/img4.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -447,7 +447,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/jpMxmk/img5.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -458,7 +458,7 @@ const data = [
     price: 19.99,
     gender: "women",
     type: "blouse",
-    img: "https://image.ibb.co/mJppz5/img6.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -469,7 +469,7 @@ const data = [
     price: 6.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/eZiSmk/img7.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -480,7 +480,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dyCysQ/img8.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -491,7 +491,7 @@ const data = [
     price: 20.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/eOYre5/img10.jpg",
+    img: imgUrl",
     inCart: false,
     category: "clothes"
   },
@@ -502,7 +502,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/f6gcK5/img9.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -513,7 +513,7 @@ const data = [
     price: 45.99,
     gender: "women",
     type: "watch",
-    img: "https://images.pexels.com/photos/69046/watch-wrist-watch-packshot-time-69046.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    img: imgUrl6/watch-wrist-watch-packshot-time-69046.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
     inCart: false,
     category: "accessories"
   },
@@ -524,7 +524,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "necklace",
-    img: "https://images.pexels.com/photos/221550/pexels-photo-221550.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    img: imgUrl50/pexels-photo-221550.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
     inCart: false,
     category: "accessories"
   },
@@ -535,7 +535,7 @@ const data = [
     price: 16.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/kOhL6k/img1.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -546,7 +546,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/nNmKz5/img2.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -557,7 +557,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/n6iMCQ/img3.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -568,7 +568,7 @@ const data = [
     price: 20.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dVfORk/img4.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -579,7 +579,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/jpMxmk/img5.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -590,7 +590,7 @@ const data = [
     price: 19.99,
     gender: "women",
     type: "blouse",
-    img: "https://image.ibb.co/mJppz5/img6.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -601,7 +601,7 @@ const data = [
     price: 6.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/eZiSmk/img7.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -612,7 +612,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dyCysQ/img8.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -623,7 +623,7 @@ const data = [
     price: 20.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/eOYre5/img10.jpg",
+    img: imgUrl",
     inCart: false,
     category: "clothes"
   },
@@ -634,7 +634,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/f6gcK5/img9.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -645,7 +645,7 @@ const data = [
     price: 45.99,
     gender: "women",
     type: "watch",
-    img: "https://images.pexels.com/photos/69046/watch-wrist-watch-packshot-time-69046.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    img: imgUrl6/watch-wrist-watch-packshot-time-69046.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
     inCart: false,
     category: "accessories"
   },
@@ -656,7 +656,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "necklace",
-    img: "https://images.pexels.com/photos/221550/pexels-photo-221550.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    img: imgUrl50/pexels-photo-221550.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
     inCart: false,
     category: "accessories"
   },
@@ -667,7 +667,7 @@ const data = [
     price: 16.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/kOhL6k/img1.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -678,7 +678,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/nNmKz5/img2.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -689,7 +689,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/n6iMCQ/img3.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -700,7 +700,7 @@ const data = [
     price: 20.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dVfORk/img4.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -711,7 +711,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/jpMxmk/img5.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -722,7 +722,7 @@ const data = [
     price: 19.99,
     gender: "women",
     type: "blouse",
-    img: "https://image.ibb.co/mJppz5/img6.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -733,7 +733,7 @@ const data = [
     price: 6.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/eZiSmk/img7.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -744,7 +744,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dyCysQ/img8.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -755,7 +755,7 @@ const data = [
     price: 20.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/eOYre5/img10.jpg",
+    img: imgUrl",
     inCart: false,
     category: "clothes"
   },
@@ -766,7 +766,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/f6gcK5/img9.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -777,7 +777,7 @@ const data = [
     price: 45.99,
     gender: "women",
     type: "watch",
-    img: "https://images.pexels.com/photos/69046/watch-wrist-watch-packshot-time-69046.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    img: imgUrl6/watch-wrist-watch-packshot-time-69046.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
     inCart: false,
     category: "accessories"
   },
@@ -788,7 +788,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "necklace",
-    img: "https://images.pexels.com/photos/221550/pexels-photo-221550.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    img: imgUrl50/pexels-photo-221550.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
     inCart: false,
     category: "accessories"
   },
@@ -799,7 +799,7 @@ const data = [
     price: 16.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/kOhL6k/img1.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -810,7 +810,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/nNmKz5/img2.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -821,7 +821,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/n6iMCQ/img3.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -832,7 +832,7 @@ const data = [
     price: 20.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dVfORk/img4.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -843,7 +843,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/jpMxmk/img5.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -854,7 +854,7 @@ const data = [
     price: 19.99,
     gender: "women",
     type: "blouse",
-    img: "https://image.ibb.co/mJppz5/img6.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -865,7 +865,7 @@ const data = [
     price: 6.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/eZiSmk/img7.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -876,7 +876,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dyCysQ/img8.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -887,7 +887,7 @@ const data = [
     price: 20.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/eOYre5/img10.jpg",
+    img: imgUrl",
     inCart: false,
     category: "clothes"
   },
@@ -898,7 +898,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/f6gcK5/img9.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -909,7 +909,7 @@ const data = [
     price: 45.99,
     gender: "women",
     type: "watch",
-    img: "https://images.pexels.com/photos/69046/watch-wrist-watch-packshot-time-69046.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    img: imgUrl6/watch-wrist-watch-packshot-time-69046.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
     inCart: false,
     category: "accessories"
   },
@@ -920,7 +920,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "necklace",
-    img: "https://images.pexels.com/photos/221550/pexels-photo-221550.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    img: imgUrl50/pexels-photo-221550.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
     inCart: false,
     category: "accessories"
   },
@@ -931,7 +931,7 @@ const data = [
     price: 16.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/kOhL6k/img1.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -942,7 +942,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/nNmKz5/img2.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -953,7 +953,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/n6iMCQ/img3.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -964,7 +964,7 @@ const data = [
     price: 20.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dVfORk/img4.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -975,7 +975,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/jpMxmk/img5.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -986,7 +986,7 @@ const data = [
     price: 19.99,
     gender: "women",
     type: "blouse",
-    img: "https://image.ibb.co/mJppz5/img6.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -997,7 +997,7 @@ const data = [
     price: 6.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/eZiSmk/img7.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -1008,7 +1008,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dyCysQ/img8.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -1019,7 +1019,7 @@ const data = [
     price: 20.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/eOYre5/img10.jpg",
+    img: imgUrl",
     inCart: false,
     category: "clothes"
   },
@@ -1030,7 +1030,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/f6gcK5/img9.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -1041,7 +1041,7 @@ const data = [
     price: 45.99,
     gender: "women",
     type: "watch",
-    img: "https://images.pexels.com/photos/69046/watch-wrist-watch-packshot-time-69046.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    img: imgUrl6/watch-wrist-watch-packshot-time-69046.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
     inCart: false,
     category: "accessories"
   },
@@ -1052,7 +1052,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "necklace",
-    img: "https://images.pexels.com/photos/221550/pexels-photo-221550.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    img: imgUrl50/pexels-photo-221550.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
     inCart: false,
     category: "accessories"
   },
@@ -1067,7 +1067,7 @@ const data = [
     price: 16.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/kOhL6k/img1.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -1078,7 +1078,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/nNmKz5/img2.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -1089,7 +1089,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/n6iMCQ/img3.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -1100,7 +1100,7 @@ const data = [
     price: 20.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dVfORk/img4.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -1111,7 +1111,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/jpMxmk/img5.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -1122,12 +1122,14 @@ const data = [
     price: 19.99,
     gender: "women",
     type: "blouse",
-    img: "https://image.ibb.co/mJppz5/img6.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
 ];
 */
+
+const imgUrl = "https://webassets.mongodb.com/_com_assets/cms/Charts@2x-drcescso5j-4otwc4gwte.png";
 
 const data = [
   {
@@ -1137,7 +1139,7 @@ const data = [
     price: 16.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/kOhL6k/img1.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -1148,7 +1150,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/nNmKz5/img2.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -1159,7 +1161,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/n6iMCQ/img3.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -1170,7 +1172,7 @@ const data = [
     price: 20.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dVfORk/img4.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -1181,7 +1183,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/jpMxmk/img5.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -1192,7 +1194,7 @@ const data = [
     price: 19.99,
     gender: "women",
     type: "blouse",
-    img: "https://image.ibb.co/mJppz5/img6.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -1203,7 +1205,7 @@ const data = [
     price: 6.00,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/eZiSmk/img7.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -1214,7 +1216,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/dyCysQ/img8.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -1225,7 +1227,7 @@ const data = [
     price: 20.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/eOYre5/img10.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -1236,7 +1238,7 @@ const data = [
     price: 4.99,
     gender: "women",
     type: "shirt",
-    img: "https://image.ibb.co/f6gcK5/img9.jpg",
+    img: imgUrl,
     inCart: false,
     category: "clothes"
   },
@@ -1247,7 +1249,7 @@ const data = [
     price: 45.99,
     gender: "women",
     type: "watch",
-    img: "https://images.pexels.com/photos/69046/watch-wrist-watch-packshot-time-69046.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    img: "https://webassets.mongodb.com/_com_assets/cms/Charts@2x-drcescso5j-4otwc4gwte.png",
     inCart: false,
     category: "accessories"
   },
@@ -1258,7 +1260,7 @@ const data = [
     price: 14.99,
     gender: "women",
     type: "necklace",
-    img: "https://images.pexels.com/photos/221550/pexels-photo-221550.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    img: "https://webassets.mongodb.com/_com_assets/cms/Charts@2x-drcescso5j-4otwc4gwte.png",
     inCart: false,
     category: "accessories"
   },
