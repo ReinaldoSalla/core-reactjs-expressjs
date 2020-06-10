@@ -1,3 +1,4 @@
+/*
 body {
   background-color: rgba(240, 240, 240, 0.5);
   margin: 0;
@@ -12,4 +13,18 @@ ul {
 
 a {
 	text-decoration: none;
+}
+*/
+
+.app {
+	text-align: center;
+}
+
+.first-element {
+	margin-top: 1000px;
+	margin-bottom: 1000px;
+}
+
+.second-element {
+	margin-bottom: 1000px;
 }
