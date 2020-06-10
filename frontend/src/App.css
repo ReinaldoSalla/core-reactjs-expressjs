@@ -20,9 +20,21 @@ a {
 	text-align: center;
 }
 
-.first-element {
+.first-element-off {
+	opacity: 0;
 	margin-top: 1000px;
 	margin-bottom: 1000px;
+	transition: transform 2000ms;
+	transform: translateX(-100%);
+}
+
+.first-element-on {
+	opacity: 1;
+	margin-top: 1000px;
+	margin-bottom: 1000px;
+	transition: transform 2000ms;
+	transform: translateX(0%);
+	font-size: 100px;
 }
 
 .second-element {
