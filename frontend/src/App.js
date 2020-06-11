@@ -26,25 +26,27 @@ import React, {
 	useEffect,
 	useState
 } from "react";
-import throttle from "lodash.throttle";
 import "./App.css";
+import throttle from "lodash.throttle";
 
+const offset = 100;
 const useVisibility = () => {
 	const [isVisible, setIsVisible] = useState(false);
 	const currentElement = createRef(null);
 
-	// onScroll is executed only once every 100 ms.
+	const checkIsVisible = top => 
+		top + offset >= 0 && top + offset <= window.innerHeight;
+
 	const onScroll = throttle(() => {
 		if (!currentElement.current) {
 			setIsVisible(false);
 			return;
+		} else {
+			setIsVisible(checkIsVisible(
+				currentElement.current.getBoundingClientRect().top
+			));
 		}
-		const top = currentElement.current.getBoundingClientRect().top;
-		setIsVisible(
-			top >= 0 && 
-			top <= window.innerHeight
-		);
-	}, 1);
+	}, 100);
 
 	useEffect(() => {
 		window.addEventListener("scroll", onScroll);
@@ -52,7 +54,7 @@ const useVisibility = () => {
 	});
 
 	return [isVisible, currentElement];
-};
+}; 
 
 const App = () => {
 	const [isFirstVisible, firstRef] = useVisibility();
@@ -60,6 +62,9 @@ const App = () => {
 	const firstClassName = isFirstVisible 
 		? "first-element-on"
 		: "first-element-off";
+	const secondClassName = isSecondVisible 
+		? "second-element-on"
+		: "second-element-off";
 
 	useEffect(() => {
 		document.title = `${isFirstVisible} - ${isSecondVisible}`
@@ -70,8 +75,10 @@ const App = () => {
 			<div ref={firstRef} className={firstClassName}>
 				Event isFirstVisible
 			</div>
-			<div ref={secondRef} className="second-element">
-				Event isSecondVisible
+			<div className="second-overflow">
+				<div ref={secondRef} className={secondClassName}>
+					Event isSecondVisible
+				</div>
 			</div>
 		</div>
 	);
