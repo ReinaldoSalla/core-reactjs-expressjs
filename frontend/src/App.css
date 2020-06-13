@@ -16,39 +16,20 @@ a {
 }
 */
 
-.app {
-	text-align: center;
+body {
+	background-color: oldlace;
 }
 
-.first-element-off, .first-element-on {
-	margin-top: 1000px;
-	margin-bottom: 1000px;
-	font-size: 100px;
+.count {
+	position: fixed;
+	color: black;
+	background-color: aquamarine;
+	z-index: 1;
 }
 
-.first-element-off {
-	transform: translateX(-100%);
-}
-
-.first-element-on {
-	transition: transform 2000ms;
-	transform: translateX(0%);
-}
-
-.second-overflow {
-	overflow: hidden;
-}
-
-.second-element-off, .second-element-on {
-	margin-bottom: 1000px;
-	font-size: 100px;
-}
-
-.second-element-off {
-	transform: translateX(100%);
-}
-
-.second-element-on {
-	transition: transform 2000ms;
-	transform: translateX(0%);
+.content {
+	position: absolute;
+	margin-top: 200px;
+	display: flex;
+	flex-wrap: wrap;
 }
