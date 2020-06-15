@@ -21,76 +21,86 @@ const App = () => {
 export default App;
 */
 
-//scroll up-down https://stackoverflow.com/questions/31223341/detecting-scroll-direction
-
 import React, {
+	createRef,
 	useEffect,
-	useState,
-	Fragment
+	useState
 } from "react";
 import "./App.css";
 
-const addZeros = number => {
-	if (number < 10) return `00${number}`
-	else if (number < 100) return `0${number}`;
-	else return number;
+const throttle = (fn, delay) => {
+  let last = 0;
+  return (...args) => {
+    const now = new Date().getTime();
+    if (now - last < delay) {
+      return;
+    }
+    last = now;
+    return fn(...args);
+  };
 };
 
-const Content = ({ numContents }) => {
-	const contents = new Array(numContents).fill(0).map((_, index) => 
-		<div key={index}>
-			Content #{addZeros(index + 1)} -
-		</div>
-	);
-	return (
-		<div className="content">
-			{contents}
-		</div>
-	)
-};
+const useVisibilityOnce = offset => {
+  const [wasAlreadyVisible, setWasAlreadyVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const currentElement = createRef(null);
 
-const debounce = (fn, delay) => {
-	let timeoutId;
-	return (...args) => {
-		if (timeoutId) clearTimeout(timeoutId);
-		timeoutId = setTimeout(() => {
-			fn(...args)
-		}, delay)
-	};
+  const checkIsVisible = top =>
+    top + offset >= 0 && top + offset <= window.innerHeight;
+
+  const onScroll = throttle(() => {
+    setIsVisible(checkIsVisible(
+      currentElement.current?.getBoundingClientRect().top
+    ));
+    if (isVisible) setWasAlreadyVisible(true);
+  }, 100);
+
+  useEffect(() => {
+    if (!wasAlreadyVisible) {
+      window.addEventListener("scroll", onScroll);
+      return () => window.removeEventListener("scroll", onScroll);
+    } 
+  });
+
+  return [isVisible, currentElement];
 };
 
 const App = () => {
-	const [countRaw, setCountRaw] = useState(0);
-	const [countDebounce, setCountDebounce] = useState(0);
+	const [isFirstVisible, firstRef] = useVisibilityOnce(100);
+	const [isSecondVisible, secondRef] = useVisibilityOnce(100);
+  const [isThirdVisible, thirdRef] = useVisibilityOnce(-300);
+	const firstClassName = isFirstVisible 
+		? "first-element-on"
+		: "first-element-off";
+	const secondClassName = isSecondVisible 
+		? "second-element-on"
+		: "second-element-off";
+  const thirdClassName = isThirdVisible
+    ? "third-element-on"
+    : "third-element-off";
 
-	const onScrollRaw = () => {
-		setCountRaw(countRaw + 1);
-	};
-
-	const onScrollDebounce = debounce(() => {
-		setCountDebounce(countDebounce + 1);
-	}, 1000);
+  console.log(thirdClassName);
 
 	useEffect(() => {
-		window.addEventListener("scroll", onScrollRaw);
-		return () => window.removeEventListener("scroll", onScrollRaw);
-	});
-
-	useEffect(() => {
-		window.addEventListener("scroll", onScrollDebounce);
-		return () => window.removeEventListener("scroll", onScrollDebounce);
-	});
+		document.title = `${isFirstVisible} - ${isSecondVisible} - ${isThirdVisible}`
+	}, [isFirstVisible, isSecondVisible, isThirdVisible]);
 
 	return (
-		<Fragment>
-			<div className="count">
-				<h1> onScrollRaw </h1>
-				<h2> raw: {countRaw} </h2>
-				<h2> debounce: {countDebounce} </h2>
+		<div className="app">
+			<div ref={firstRef} className={firstClassName}>
+				Event isFirstVisible
 			</div>
-			<Content numContents={1000}/>
-		</Fragment>
+			<div className="second-overflow">
+				<div ref={secondRef} className={secondClassName}>
+					Event isSecondVisible
+				</div>
+			</div>
+      <div ref={thirdRef} className={thirdClassName}>
+        Event isThirdVisible
+      </div>
+		</div>
 	);
-}
+};
+
 
 export default App;
