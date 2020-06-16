@@ -19,7 +19,7 @@ const Loading = () => (
 const calcInstallments = price => (price / 5).toFixed(2);
 
 const Product = ({ name, price, img }) => (
-	<div className="product-container">
+	<div className="product">
 		<span className="product-name">{name}</span>
 		<img className="product-img" src={img} alt={name}/>
 		<span className="product-price">
