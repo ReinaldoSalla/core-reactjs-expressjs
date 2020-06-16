@@ -1,47 +1,30 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./Footer.css";
 
 const Footer = () => (
-  <div className="footer">
+  <Fragment>
+    <div className="footer-line" />
     <div className="footer-content">
-      <div className="about">
-        <div className="footer-title">
-          About
-        </div>
-        <a target="_blank" href="/#" className="footer-link">
-          Sigma Technology
+      <div> 
+        <a href="/#" target="_blank" className="footer-content-link">
+          Sigma Technology 
         </a>
-        <br />
-        <a target="_blank" href="/#" className="footer-link">
-          Legal
-        </a>
-        <br />
-        <a target="_black" href="/#" className="footer-link">
+      </div>
+      <div>
+        <a href="/#" target="_blank" className="footer-content-link">
           Contact
         </a>
       </div>
-      <div className="websites">
-        <div className="footer-title">
-          Websites
-        </div>
-        <a target="_blank" href="/#" className="footer-link">
-          Amazon
-        </a>
-        <br />
-        <a target="_black" href="/#" className="footer-link">
-          Ebay
-        </a>
-        <br />
-        <a target="_black" href="/#" className="footer-link">
-          Alibaba
-        </a>
-        <br />
-        <a target="_black" href="/#" className="footer-link">
-          AliExpress
+      <div>
+        <a href="/#" target="_blank" className="footer-content-link">
+          Legal 
         </a>
       </div>
+      <div className="footer-year">
+        Copyright © {new Date().getFullYear()} Sigma
+      </div>
     </div>
-  </div>
+  </Fragment>
 );
 
 export default Footer;
