@@ -9,6 +9,9 @@ import {
 	GiHouse,
 	GiIsland
 } from "react-icons/gi";
+import 
+  useVisibilityScrollOnce 
+from "../../utils/useVisibilityScrollOnce";
 import "./Categories.css";
 
 const Title = () => (
@@ -24,34 +27,40 @@ const Category = ({ text, icon }) => (
 	</div>
 );
 
-const Categories = () => (
-	<div className="categories">
-		<Category 
-			text="Electronics" 
-			icon={<GiSmartphone />}
-		/>
-		<Category 
-			text="Clothes" 
-			icon={<GiLoincloth />}
-		/>
-		<Category 
-			text="Vehicles" 
-			icon={<FaCar />}
-		/>
-		<Category 
-			text="Apartments" 
-			icon={<FaBuilding />}
-		/>
-		<Category 
-			text="Houses" 
-			icon={<GiHouse />}
-		/>
-		<Category 
-			text="Islands" 
-			icon={<GiIsland />}
-		/>
-	</div>
-);
+const Categories = () => {
+  const [isVisible, ref] = useVisibilityScrollOnce(100);
+  const categoriesClassName = isVisible 
+    ? "categories-on" 
+    : "categories-off";
+  return (
+  	<div ref={ref} className={categoriesClassName}>
+  		<Category 
+  			text="Electronics" 
+  			icon={<GiSmartphone />}
+  		/>
+  		<Category 
+  			text="Clothes" 
+  			icon={<GiLoincloth />}
+  		/>
+  		<Category 
+  			text="Vehicles" 
+  			icon={<FaCar />}
+  		/>
+  		<Category 
+  			text="Apartments" 
+  			icon={<FaBuilding />}
+  		/>
+  		<Category 
+  			text="Houses" 
+  			icon={<GiHouse />}
+  		/>
+  		<Category 
+  			text="Islands" 
+  			icon={<GiIsland />}
+  		/>
+  	</div>
+  );
+};
 
 const CategoriesSection = () => (
 	<Fragment>
