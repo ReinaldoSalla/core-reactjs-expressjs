@@ -5,6 +5,7 @@
 .trending-title {
 	margin-top: 150px;
 	text-align: center;
+  transform: translateY(50%);
 }
 
 .loading {
@@ -18,7 +19,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin: 50px;
+  margin: 0 50px 50px 50px;
 }
 
 .product {

@@ -12,8 +12,10 @@
   margin-right: 75px;
   margin-left: 75px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
+  align-items: center;
+  height: 150px;
 }
 
 .footer-content-link, .footer-year {
@@ -22,13 +24,4 @@
 
 .footer-content-link:hover {
   color: red
-}
-
-@media (max-width: 750px) {
-  .footer-content {
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 150px;
-  }
 }

@@ -15,9 +15,9 @@ from "../../utils/useVisibilityScrollOnce";
 import "./Categories.css";
 
 const Title = () => (
-	<div className="categories-title">
+	<h2 className="categories-title">
 		Browse by categories
-	</div>
+	</h2>
 );
 
 const Category = ({ text, icon }) => (
