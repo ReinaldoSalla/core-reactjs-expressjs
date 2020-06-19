@@ -3,6 +3,7 @@ import React, {
 	useState
 } from "react";
 import "./Trending.css";
+import useVisibilityTimeOnce from "../../utils/useVisibility";
 
 const Title = ({ title }) => (
 	<h1 className="trending-title">
@@ -16,21 +17,25 @@ const Loading = () => (
 	</h1>
 );
 
-const calcInstallments = price => (price / 5).toFixed(2);
-
-const Product = ({ name, price, img }) => (
-	<div className="product">
-		<span className="product-name">{name}</span>
-		<img className="product-img" src={img} alt={name}/>
-		<span className="product-price">
-			${price} 
-			<span className="product-installment">
-				or 5x ${calcInstallments(price)}
-			</span>
-		</span>
-		<span className="product-add">Add to cart</span>
-	</div>
-);
+const Product = ({ name, price, img }) => {
+  const [isVisible, ref] = useVisibilityTimeOnce(-100);
+  const className = isVisible ? "product-on" : "product-off";
+  return (
+  	<div className={className} ref={ref}>
+  		<div className="product-name">{name}</div>
+  		<img className="product-img" src={img} alt={name}/>
+      <div className="product-line"/>
+  		<div className="product-price">
+  			${price} 
+      </div>
+			<div className="product-average">
+				(5% bellow average)
+			</div>
+  		<button className="product-button">Add to Pocket</button>
+      <button className="product-button">Visit Link</button>
+  	</div>
+  );
+};
 
 const ListProducts = ({ products }) => (
 	products.map((product, index) => 

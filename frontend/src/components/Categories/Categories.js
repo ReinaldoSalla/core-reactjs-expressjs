@@ -9,9 +9,7 @@ import {
 	GiHouse,
 	GiIsland
 } from "react-icons/gi";
-import 
-  useVisibilityScrollOnce 
-from "../../utils/useVisibilityScrollOnce";
+import useVisibilityTimeOnce from "../../utils/useVisibility";
 import "./Categories.css";
 
 const Title = () => (
@@ -28,7 +26,7 @@ const Category = ({ text, icon }) => (
 );
 
 const Categories = () => {
-  const [isVisible, ref] = useVisibilityScrollOnce(100);
+  const [isVisible, ref] = useVisibilityTimeOnce(100);
   const categoriesClassName = isVisible 
     ? "categories-on" 
     : "categories-off";
