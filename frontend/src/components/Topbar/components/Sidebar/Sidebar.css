@@ -44,6 +44,72 @@
 	left: -80px;
 }
 
+@media (max-width: 1500px) {
+  .sidebar-content-on {
+    left: -60px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .sidebar-content-on {
+    left: -50px
+  }
+}
+
+@media (max-width: 1200px) {
+  .sidebar-content-on {
+    left: -40px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .sidebar-content-on {
+    left: -30px
+  }
+}
+
+@media (max-width: 1000px) {
+  .sidebar-content-on {
+    left: -20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar-content-on {
+    left: -10px;
+  }
+}
+
+@media (max-width: 800px) {
+  .sidebar-content-on {
+    left: 0px;
+  }
+}
+
+@media (max-width: 700px) {
+  .sidebar-content-on {
+    left: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar-content-on {
+    left: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .sidebar-content-on {
+    left: 30px;
+  }
+}
+
+@media (max-width: 400px) {
+  .sidebar-content-on {
+    left: 40px;
+  }
+}
+
 .sidebar-content-item, .sidebar-content-item-reduced {
 	padding: 10px;
 	height: 20px;
@@ -91,10 +157,10 @@
 	transform: translateX(200%);
 }
 
-.electronics-off,
-.clothes-off,
-.vehicles-off,
-.apartments-off,
+.smartphones-off,
+.notebooks-off,
+.televisions-off,
+.videogames-off,
 .houses-off,
 .islands-off {
 	position: absolute;
@@ -103,10 +169,10 @@
 }
 
 .primary-on,
-.electronics-on,
-.clothes-on,
-.vehicles-on,
-.apartments-on,
+.smartphones-on,
+.notebooks-on,
+.televisions-on,
+.videogames-on,
 .houses-on,
 .islands-on {
 	position: absolute;

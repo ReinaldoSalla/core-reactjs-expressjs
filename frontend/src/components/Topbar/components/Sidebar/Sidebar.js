@@ -9,20 +9,33 @@ import React, {
 } from "react";
 import { 
 	FaCar,
-	FaBuilding
+	FaBuilding,
+  FaLaptop
 } from "react-icons/fa";
 import { 
 	GiSmartphone,
 	GiLoincloth,
 	GiHouse,
-	GiIsland
+	GiIsland,
+  GiGamepad
 } from "react-icons/gi";
 import {  
 	AiOutlineArrowRight,
 	AiOutlineArrowLeft 
 } from "react-icons/ai";
 import { BsLayoutTextSidebar } from "react-icons/bs";
+import { FiMonitor } from "react-icons/fi";
 import "./Sidebar.css";
+
+/*
+smartphone = iphone, galaxy, pixel
+notebooks - macbook, dell, alienware, acer, lenovo
+televisions - sony, samsung, lg, panasonic
+video-games: xbox, playstation, valve vr
+man's - t-shirts, pants, shoes, underware, perfumes
+woman's t-shirts, dresses, pants, shoes, underware, perfumes
+browse all
+*/
 
 const LeftIcon = ({ leftIcon }) => (
 	<span className="sidebar-content-left-icon">
@@ -38,7 +51,7 @@ const MiddleText = ({ text }) => (
 
 const OptionalRightIcon = ({ rightIcon }) => (
 	rightIcon 
-		? <span className="sidebar-content-right-icon">{rightIcon}</span>
+		? <span className="sidebar-content-right-icon">{rightIcon}</span>  
 		: null
 );
 
@@ -76,10 +89,10 @@ const SidebarContentItem = ({
 
 const reference = {
 	primary: "primary-off",
-	electronics: "electronics-off",
-	clothes: "clothes-off",
-	vehicles: "vehicles-off",
-	apartments: "apartments-off",
+	smartphones: "smartphones-off",
+	notebooks: "notebooks-off",
+	televisions: "televisions-off",
+	videogames: "videogames-off",
 	houses: "houses-off",
 	islands: "islands-off",
 	height: null
@@ -96,27 +109,27 @@ const moveToPrimary = action => ({
 	height: action.payload
 });
 
-const moveToElectronics = action => ({
+const moveToSmartphones = action => ({
 	...reference,
-	electronics: "electronics-on",
+	smartphones: "smartphones-on",
 	height: action.payload
 });
 
-const moveToClothes = action => ({
+const moveToNotebooks = action => ({
 	...reference,
-	clothes: "clothes-on",
+	notebooks: "notebooks-on",
 	height: action.payload
 });
 
-const moveToVehicles = action => ({
+const moveToTelevisions = action => ({
 	...reference,
-	vehicles: "vehicles-on",
+	televisions: "televisions-on",
 	height: action.payload
 });
 
-const moveToApartments = action => ({
+const moveToVideogames = action => ({
 	...reference,
-	apartments: "apartments-on",
+	videogames: "videogames-on",
 	height: action.payload
 });
 
@@ -144,14 +157,14 @@ const reducer = (state, action) => {
 			return setInitialHeight(action);
 		case "MOVE_TO_PRIMARY":
 			return moveToPrimary(action);
-		case "MOVE_TO_ELECTRONICS":
-			return moveToElectronics(action);
-		case "MOVE_TO_CLOTHES":
-			return moveToClothes(action);
-		case "MOVE_TO_VEHICLES":
-			return moveToVehicles(action);
-		case "MOVE_TO_APARTMENTS":
-			return moveToApartments(action);
+		case "MOVE_TO_SMARTPHONES":
+			return moveToSmartphones(action);
+		case "MOVE_TO_NOTEBOOKS":
+			return moveToNotebooks(action);
+		case "MOVE_TO_TELEVISIONS":
+			return moveToTelevisions(action);
+		case "MOVE_TO_VIDEOGAMES":
+			return moveToVideogames(action);
 		case "MOVE_TO_HOUSES":
 			return moveToHouses(action);
 		case "MOVE_TO_ISLANDS":
@@ -167,10 +180,10 @@ const SidebarContentProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 	const sidebarContentRef = useRef(null);
 	const primaryRef = useRef(null);
-	const electronicsRef = useRef(null);
-	const clothesRef = useRef(null);
-	const vehiclesRef = useRef(null);
-	const apartmentsRef = useRef(null);
+	const smartphonesRef = useRef(null);
+	const notebooksRef = useRef(null);
+	const televisionsRef = useRef(null);
+	const videogamesRef = useRef(null);
 	const housesRef = useRef(null);
 	const islandsRef = useRef(null);
 
@@ -180,28 +193,28 @@ const SidebarContentProvider = ({ children }) => {
 			payload: primaryRef.current.offsetHeight 
 		});
 
-	const moveToElectronics = () => 
+	const moveToSmartphones = () => 
 		dispatch({ 
-			type: "MOVE_TO_ELECTRONICS",
-			payload: electronicsRef.current.offsetHeight
+			type: "MOVE_TO_SMARTPHONES",
+			payload: smartphonesRef.current.offsetHeight
 		});
 
-	const moveToClothes = () =>
+	const moveToNotebooks = () =>
 		dispatch({ 
-			type: "MOVE_TO_CLOTHES",
-			payload: clothesRef.current.offsetHeight 
+			type: "MOVE_TO_NOTEBOOKS",
+			payload: notebooksRef.current.offsetHeight 
 		});
 
-	const moveToVehicles = () =>
+	const moveToTelevisions = () =>
 		dispatch({ 
-			type: "MOVE_TO_VEHICLES",
-			payload: vehiclesRef.current.offsetHeight
+			type: "MOVE_TO_TELEVISIONS",
+			payload: televisionsRef.current.offsetHeight
 		});
 
-	const moveToApartments = () => 
+	const moveToVideogames = () => 
 		dispatch({ 
-			type: "MOVE_TO_APARTMENTS",
-			payload: apartmentsRef.current.offsetHeight 
+			type: "MOVE_TO_VIDEOGAMES",
+			payload: videogamesRef.current.offsetHeight 
 		});
 
 	const moveToHouses = () => 
@@ -228,25 +241,25 @@ const SidebarContentProvider = ({ children }) => {
 
 	const value = {
 		primaryClassName: state.primary,
-		electronicsClassName: state.electronics,
-		clothesClassName: state.clothes,
-		vehiclesClassName: state.vehicles,
-		apartmentsClassName: state.apartments,
+		smartphonesClassName: state.smartphones,
+		notebooksClassName: state.notebooks,
+		televisionsClassName: state.televisions,
+		videogamesClassName: state.videogames,
 		housesClassName: state.houses,
 		islandsClassName: state.islands,
 		height: state.height,
 		primaryRef,
-		electronicsRef,
-		clothesRef,
-		vehiclesRef,
-		apartmentsRef,
+		smartphonesRef,
+		notebooksRef,
+		televisionsRef,
+		videogamesRef,
 		housesRef,
 		islandsRef,
 		moveToPrimary,
-		moveToElectronics,
-		moveToClothes,
-		moveToVehicles,
-		moveToApartments,
+		moveToSmartphones,
+		moveToNotebooks,
+		moveToTelevisions,
+		moveToVideogames,
 		moveToHouses,
 		moveToIslands,
 		sidebarContentRef
@@ -263,10 +276,10 @@ const SidebarContentPrimary = () => {
 	const {
 		primaryClassName,
 		primaryRef,
-		moveToElectronics,
-		moveToClothes,
-		moveToVehicles,
-		moveToApartments,
+		moveToSmartphones,
+		moveToNotebooks,
+		moveToTelevisions,
+		moveToVideogames,
 		moveToHouses,
 		moveToIslands,
 	} = useContext(SidebarContentContext);
@@ -278,27 +291,27 @@ const SidebarContentPrimary = () => {
 		>
 			<SidebarContentItem
 				leftIcon={<GiSmartphone />}
-				text="Eletronics"
+				text="Smartphones"
 				rightIcon={<AiOutlineArrowRight />}
-				moveToMenu={moveToElectronics}
+				moveToMenu={moveToSmartphones}
 			/> 
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Clothes"
+				leftIcon={<FaLaptop />}
+				text="Notebooks"
 				rightIcon={<AiOutlineArrowRight />}
-				moveToMenu={moveToClothes}
+				moveToMenu={moveToNotebooks}
 			/>
 			<SidebarContentItem
-				leftIcon={<FaCar />}
-				text="Vehicles"
+				leftIcon={<FiMonitor />}
+				text="Televisions"
 				rightIcon={<AiOutlineArrowRight />}
-				moveToMenu={moveToVehicles}
+				moveToMenu={moveToTelevisions}
 			/>
 			<SidebarContentItem
-				leftIcon={<FaBuilding />}
-				text="Apartments"
+				leftIcon={<GiGamepad />}
+				text="Videogames"
 				rightIcon={<AiOutlineArrowRight />}
-				moveToMenu={moveToApartments}
+				moveToMenu={moveToVideogames}
 			/>
 			<SidebarContentItem
 				leftIcon={<GiHouse />}
@@ -317,17 +330,17 @@ const SidebarContentPrimary = () => {
 	);
 };
 
-const SidebarContentElectronics = () => {
+const SidebarContentSmartphones = () => {
 	const { 
-		electronicsClassName, 
-		electronicsRef,
+		smartphonesClassName, 
+		smartphonesRef,
 		moveToPrimary 
 	} = useContext(SidebarContentContext);
 
 	return (
 		<div 
-			className={electronicsClassName}
-			ref={electronicsRef}
+			className={smartphonesClassName}
+			ref={smartphonesRef}
 		>
 			<SidebarContentItem
 				leftIcon={<AiOutlineArrowLeft />}
@@ -335,170 +348,133 @@ const SidebarContentElectronics = () => {
 				moveToMenu={moveToPrimary}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiSmartphone />}
-				text="Electronic1"
+        leftIcon={<GiSmartphone />}
+				text="Iphone"
 			/> 
 			<SidebarContentItem
-				leftIcon={<GiSmartphone />}
-				text="Electronic2"
+        leftIcon={<GiSmartphone />}
+				text="Galaxy"
 			/>
 			<SidebarContentItem
-				leftIcon={<GiSmartphone />}
-				text="Electronic2"
+        leftIcon={<GiSmartphone />}
+				text="Pixel"
 			/>
 			<SidebarContentItem
-				leftIcon={<GiSmartphone />}
-				text="Electronic4"
-			/>
-			<SidebarContentItem
-				leftIcon={<GiSmartphone />}
-				text="Electronic5"
-			/>
-			<SidebarContentItem
-				leftIcon={<GiSmartphone />}
-				text="Electronics6"
-			/>
-			<SidebarContentItem
-				leftIcon={<GiSmartphone />}
-				text="Electronics7"
-			/>
-			<SidebarContentItem
-				leftIcon={<GiSmartphone />}
-				text="Electronics8"
-				divisible={false}
+        leftIcon={<GiSmartphone />}
+				text="Browse All"
 			/>
 		</div>
 	);
 };
 
-const SidebarContentClothes = () => {
+const SidebarContentNotebooks = () => {
 	const {
-		clothesClassName,
-		clothesRef,
+		notebooksClassName,
+		notebooksRef,
 		moveToPrimary
 	} = useContext(SidebarContentContext);
 
 	return (
 		<div 
-			className={clothesClassName}
-			ref={clothesRef}
+			className={notebooksClassName}
+			ref={notebooksRef}
 		>
 			<SidebarContentItem
-				leftIcon={<AiOutlineArrowLeft />}
+        leftIcon={<AiOutlineArrowLeft />}
 				text="Return"
 				moveToMenu={moveToPrimary}
 				reduce={true}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth1"
+        leftIcon={<FaLaptop />}
+				text="Macbook"
 				reduce={true}
 			/> 
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth2"
+        leftIcon={<FaLaptop />}
+				text="Dell"
 				reduce={true}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth2"
+        leftIcon={<FaLaptop />}
+				text="Alienware"
 				reduce={true}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth4"
+        leftIcon={<FaLaptop />}
+				text="Acer"
 				reduce={true}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth5"
+        leftIcon={<FaLaptop />}
+				text="Lenovo"
 				reduce={true}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth6"
+        leftIcon={<FaLaptop />}
+				text="Browse all"
 				reduce={true}
-			/>
-			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth7"
-				reduce={true}
-			/>
-			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth8"
-				reduce={true}
-				divisible={false}
 			/>
 		</div>
 	);
 };
 
-const SidebarContentVehicles = () => {
+const SidebarContentTelevisions = () => {
 	const {
-		vehiclesClassName,
-		vehiclesRef,
+		televisionsClassName,
+		televisionsRef,
 		moveToPrimary
 	} = useContext(SidebarContentContext);
 
 	return (
 		<div 
-			className={vehiclesClassName}
-			ref={vehiclesRef}
+			className={televisionsClassName}
+			ref={televisionsRef}
 		>
 			<SidebarContentItem
-				leftIcon={<AiOutlineArrowLeft />}
+        leftIcon={<AiOutlineArrowLeft />}
 				text="Return"
 				moveToMenu={moveToPrimary}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth1"
+        leftIcon={<FiMonitor />}
+				text="Sony"
 			/> 
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth2"
+        leftIcon={<FiMonitor />}
+				text="Samsung"
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth2"
+        leftIcon={<FiMonitor />}
+				text="LG"
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth4"
+        leftIcon={<FiMonitor />}
+				text="Panasonic"
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth5"
+        leftIcon={<FiMonitor />}
+				text="Vizio"
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth6"
-			/>
-			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth7"
-			/>
-			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth8"
-				divisible={false}
+        leftIcon={<FiMonitor />}
+				text="Browse All"
 			/>
 		</div>
 	);
 };
 
-const SidebarContentApartments = () => {
+const SidebarContentVideogames = () => {
 	const {
-		apartmentsClassName,
-		apartmentsRef,
+		videogamesClassName,
+		videogamesRef,
 		moveToPrimary
 	} = useContext(SidebarContentContext);
 
 	return (
 		<div 
-			className={apartmentsClassName}
-			ref={apartmentsRef}
+			className={videogamesClassName}
+			ref={videogamesRef}
 		>
 			<SidebarContentItem
 				leftIcon={<AiOutlineArrowLeft />}
@@ -506,37 +482,25 @@ const SidebarContentApartments = () => {
 				moveToMenu={moveToPrimary}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth1"
+				leftIcon={<GiGamepad />}
+				text="Playstation"
 			/> 
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth2"
+				leftIcon={<GiGamepad />}
+				text="Xbox"
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth2"
+				leftIcon={<GiGamepad />}
+				text="Valve Vr"
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth4"
+				leftIcon={<GiGamepad />}
+				text="Gamer Notebooks"
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth5"
-			/>
-			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth6"
-			/>
-			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth7"
-			/>
-			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth8"
-				divisible={false}
+				leftIcon={<GiGamepad />}
+				text="Browse All"
+        divisable={false}
 			/>
 		</div>
 	);
@@ -660,10 +624,10 @@ const SidebarContent = ({ contentClassName }) => {
 			style={{ height: height }}
 		>
 			<SidebarContentPrimary />
-			<SidebarContentElectronics />
-			<SidebarContentClothes />
-			<SidebarContentVehicles />
-			<SidebarContentApartments />
+			<SidebarContentSmartphones />
+			<SidebarContentNotebooks />
+			<SidebarContentTelevisions />
+			<SidebarContentVideogames />
 			<SidebarContentHouses />
 			<SidebarContentIslands />
 		</div>
@@ -671,7 +635,7 @@ const SidebarContent = ({ contentClassName }) => {
 };
 
 const Sidebar = () => {
-	const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+	const [isSidebarVisible, setIsSidebarVisible] = useState(true);
 	const iconClassName = isSidebarVisible 
 		? "sidebar-icon-on"
 		: "sidebar-icon-off";
