@@ -93,8 +93,8 @@ const reference = {
 	notebooks: "notebooks-off",
 	televisions: "televisions-off",
 	videogames: "videogames-off",
-	houses: "houses-off",
-	islands: "islands-off",
+	mens: "mens-off",
+	womans: "womans-off",
 	height: null
 };
 
@@ -133,15 +133,15 @@ const moveToVideogames = action => ({
 	height: action.payload
 });
 
-const moveToHouses = action => ({
+const moveToMens = action => ({
 	...reference,
-	houses: "houses-on",
+	mens: "mens-on",
 	height: action.payload
 });
 
-const moveToIslands = action => ({
+const moveToWomans = action => ({
 	...reference,
-	islands: "islands-on",
+	womans: "womans-on",
 	height: action.payload
 });
 
@@ -165,10 +165,10 @@ const reducer = (state, action) => {
 			return moveToTelevisions(action);
 		case "MOVE_TO_VIDEOGAMES":
 			return moveToVideogames(action);
-		case "MOVE_TO_HOUSES":
-			return moveToHouses(action);
-		case "MOVE_TO_ISLANDS":
-			return moveToIslands(action);
+		case "MOVE_TO_MENS":
+			return moveToMens(action);
+		case "MOVE_TO_WOMANS":
+			return moveToWomans(action);
 		default:
 			throw new ReferenceError(`Action type ${action.type} is not defined`);
 	}
@@ -184,8 +184,8 @@ const SidebarContentProvider = ({ children }) => {
 	const notebooksRef = useRef(null);
 	const televisionsRef = useRef(null);
 	const videogamesRef = useRef(null);
-	const housesRef = useRef(null);
-	const islandsRef = useRef(null);
+	const mensRef = useRef(null);
+	const womansRef = useRef(null);
 
 	const moveToPrimary = () => 
 		dispatch({ 
@@ -217,16 +217,16 @@ const SidebarContentProvider = ({ children }) => {
 			payload: videogamesRef.current.offsetHeight 
 		});
 
-	const moveToHouses = () => 
+	const moveToMens = () => 
 		dispatch({ 
-			type: "MOVE_TO_HOUSES",
-			payload: housesRef.current.offsetHeight 
+			type: "MOVE_TO_MENS",
+			payload: mensRef.current.offsetHeight 
 		});
 
-	const moveToIslands = () => 
+	const moveToWomans = () => 
 		dispatch({ 
-			type: "MOVE_TO_ISLANDS",
-			payload: islandsRef.current.offsetHeight 
+			type: "MOVE_TO_WOMANS",
+			payload: womansRef.current.offsetHeight 
 		});
 
 	const setInitialHeight = () =>
@@ -245,23 +245,23 @@ const SidebarContentProvider = ({ children }) => {
 		notebooksClassName: state.notebooks,
 		televisionsClassName: state.televisions,
 		videogamesClassName: state.videogames,
-		housesClassName: state.houses,
-		islandsClassName: state.islands,
+		mensClassName: state.mens,
+		womansClassName: state.womans,
 		height: state.height,
 		primaryRef,
 		smartphonesRef,
 		notebooksRef,
 		televisionsRef,
 		videogamesRef,
-		housesRef,
-		islandsRef,
+		mensRef,
+		womansRef,
 		moveToPrimary,
 		moveToSmartphones,
 		moveToNotebooks,
 		moveToTelevisions,
 		moveToVideogames,
-		moveToHouses,
-		moveToIslands,
+		moveToMens,
+		moveToWomans,
 		sidebarContentRef
 	};
 
@@ -280,8 +280,8 @@ const SidebarContentPrimary = () => {
 		moveToNotebooks,
 		moveToTelevisions,
 		moveToVideogames,
-		moveToHouses,
-		moveToIslands,
+		moveToMens,
+		moveToWomans,
 	} = useContext(SidebarContentContext);
 
 	return (
@@ -315,15 +315,15 @@ const SidebarContentPrimary = () => {
 			/>
 			<SidebarContentItem
 				leftIcon={<GiHouse />}
-				text="Houses"
+				text="Men's"
 				rightIcon={<AiOutlineArrowRight />}
-				moveToMenu={moveToHouses}
+				moveToMenu={moveToMens}
 			/>
 			<SidebarContentItem
 				leftIcon={<GiIsland />}
-				text="Islands"
+				text="Woman's"
 				rightIcon={<AiOutlineArrowRight />}
-				moveToMenu={moveToIslands}
+				moveToMenu={moveToWomans}
 				divisible={false}
 			/>
 		</div>
@@ -506,17 +506,17 @@ const SidebarContentVideogames = () => {
 	);
 };
 
-const SidebarContentHouses = () => {
+const SidebarContentMens = () => {
 	const {
-		housesClassName,
-		housesRef,
+		mensClassName,
+		mensRef,
 		moveToPrimary
 	} = useContext(SidebarContentContext);
 
 	return (
 		<div 
-			className={housesClassName}
-			ref={housesRef}
+			className={mensClassName}
+			ref={mensRef}
 		>
 			<SidebarContentItem
 				leftIcon={<AiOutlineArrowLeft />}
@@ -525,52 +525,48 @@ const SidebarContentHouses = () => {
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
-				text="Cloth1"
+				text="T-Shrits"
 			/> 
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
-				text="Cloth2"
+				text="Pants"
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
-				text="Cloth2"
+				text="Shoes"
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
-				text="Cloth4"
+				text="Socks"
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
-				text="Cloth5"
+				text="Underware"
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
-				text="Cloth6"
+				text="Perfumes"
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
-				text="Cloth7"
-			/>
-			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
-				text="Cloth8"
-				divisible={false}
+				text="Browse All"
+        divisible={false}
 			/>
 		</div>
 	);
 };
 
-const SidebarContentIslands = () => {
+const SidebarContentWomans = () => {
 	const {
-		islandsClassName,
-		islandsRef,
+		womansClassName,
+		womansRef,
 		moveToPrimary
 	} = useContext(SidebarContentContext);
 
 	return (
 		<div 
-			className={islandsClassName}
-			ref={islandsRef}
+			className={womansClassName}
+			ref={womansRef}
 		>
 			<SidebarContentItem
 				leftIcon={<AiOutlineArrowLeft />}
@@ -579,35 +575,35 @@ const SidebarContentIslands = () => {
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
-				text="Cloth1"
+				text="T-Shirts"
 			/> 
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
-				text="Cloth2"
+				text="Dresses"
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
-				text="Cloth2"
+				text="Pants"
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
-				text="Cloth4"
+				text="Shoes"
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
-				text="Cloth5"
+				text="Socks"
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
-				text="Cloth6"
+				text="Underware"
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
-				text="Cloth7"
+				text="Perfumes"
 			/>
 			<SidebarContentItem
 				leftIcon={<GiLoincloth />}
-				text="Cloth8"
+				text="Browse All"
 				divisible={false}
 			/>
 		</div>
@@ -628,8 +624,8 @@ const SidebarContent = ({ contentClassName }) => {
 			<SidebarContentNotebooks />
 			<SidebarContentTelevisions />
 			<SidebarContentVideogames />
-			<SidebarContentHouses />
-			<SidebarContentIslands />
+			<SidebarContentMens />
+			<SidebarContentWomans />
 		</div>
 	);
 };

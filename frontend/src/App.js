@@ -15,8 +15,8 @@ const App = () => {
 			<Trending />
 			<Categories />
       <Footer />
-		</Fragment>
+		</Fragment>                                                        
 	);
 };
 
-export default App;
+export default App;                                                    

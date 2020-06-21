@@ -161,8 +161,8 @@
 .notebooks-off,
 .televisions-off,
 .videogames-off,
-.houses-off,
-.islands-off {
+.mens-off,
+.womans-off {
 	position: absolute;
 	transition: transform 1000ms;
 	transform: translateX(-200%);
@@ -173,8 +173,8 @@
 .notebooks-on,
 .televisions-on,
 .videogames-on,
-.houses-on,
-.islands-on {
+.mens-on,
+.womans-on {
 	position: absolute;
 	transition: transform 1000ms;
 	transform: translateX(0%);
