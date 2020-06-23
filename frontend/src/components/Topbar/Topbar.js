@@ -4,17 +4,11 @@ import { FaShoppingCart } from "react-icons/fa";
 import { AiOutlineLogin } from "react-icons/ai";
 import "./Topbar.css";
 
-function CompanyLogo() {
-	return (
-		<span className="company-logo">CompanyLogo</span>
-	);
-}
+const CompanyLogo = () =>
+	<span className="company-logo">CompanyLogo</span>;
 
-function InputSearch() {
-	return (
-		<input className="input-search" type="text" placeholder="e.g. T-Shirt Male"/>
-	);
-}
+const InputSearch = () => 
+	<input className="input-search" type="text" placeholder="e.g. T-Shirt Male"/>;
 
 const Login = () => (
 	<AiOutlineLogin className="login-icon" />
