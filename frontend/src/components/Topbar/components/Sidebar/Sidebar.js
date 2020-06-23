@@ -7,11 +7,7 @@ import React, {
 	createContext,
 	Fragment
 } from "react";
-import { 
-	FaCar,
-	FaBuilding,
-  FaLaptop
-} from "react-icons/fa";
+import { FaBackspace, FaLaptopCode } from "react-icons/fa";
 import { 
 	GiSmartphone,
 	GiLoincloth,
@@ -21,8 +17,13 @@ import {
 } from "react-icons/gi";
 import {  
 	AiOutlineArrowRight,
-	AiOutlineArrowLeft 
+	AiOutlineArrowLeft,
+  AiOutlineSearch
 } from "react-icons/ai";
+import { 
+  RiMenLine, 
+  RiWomenLine,
+} from "react-icons/ri";
 import { BsLayoutTextSidebar } from "react-icons/bs";
 import { FiMonitor } from "react-icons/fi";
 import "./Sidebar.css";
@@ -44,9 +45,9 @@ const LeftIcon = ({ leftIcon }) => (
 );
 
 const MiddleText = ({ text }) => (
-	<span className="sidebar-content-text">
+	<div className="sidebar-content-text">
 		{text}
-	</span>
+	</div>
 );
 
 const OptionalRightIcon = ({ rightIcon }) => (
@@ -78,7 +79,7 @@ const SidebarContentItem = ({
 				className={className}
 				onClick={moveToMenu}
 			>
-				<LeftIcon leftIcon={leftIcon}/>
+				<LeftIcon leftIcon={leftIcon}/> 
 				<MiddleText text={text} />
 				<OptionalRightIcon rightIcon={rightIcon}/>
 			</a>
@@ -86,6 +87,7 @@ const SidebarContentItem = ({
 		</Fragment>
 	);
 };
+
 
 const reference = {
 	primary: "primary-off",
@@ -296,7 +298,7 @@ const SidebarContentPrimary = () => {
 				moveToMenu={moveToSmartphones}
 			/> 
 			<SidebarContentItem
-				leftIcon={<FaLaptop />}
+				leftIcon={<FaLaptopCode />}
 				text="Notebooks"
 				rightIcon={<AiOutlineArrowRight />}
 				moveToMenu={moveToNotebooks}
@@ -314,18 +316,23 @@ const SidebarContentPrimary = () => {
 				moveToMenu={moveToVideogames}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiHouse />}
+				leftIcon={<RiMenLine />}
 				text="Men's"
 				rightIcon={<AiOutlineArrowRight />}
 				moveToMenu={moveToMens}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiIsland />}
+				leftIcon={<RiWomenLine />}
 				text="Woman's"
 				rightIcon={<AiOutlineArrowRight />}
 				moveToMenu={moveToWomans}
-				divisible={false}
 			/>
+      <SidebarContentItem
+        leftIcon={<AiOutlineSearch />}
+        text="Browse All"
+        rightIcon={<AiOutlineArrowRight />}
+        divisible={false}
+      />
 		</div>
 	);
 };
@@ -343,25 +350,31 @@ const SidebarContentSmartphones = () => {
 			ref={smartphonesRef}
 		>
 			<SidebarContentItem
-				leftIcon={<AiOutlineArrowLeft />}
+        leftIcon={<AiOutlineArrowLeft />}
 				text="Return"
+        rightIcon={<FaBackspace />}
 				moveToMenu={moveToPrimary}
 			/>
 			<SidebarContentItem
         leftIcon={<GiSmartphone />}
-				text="Iphone"
+        text="Iphone"
+        rightIcon={<AiOutlineArrowRight />}        
 			/> 
 			<SidebarContentItem
         leftIcon={<GiSmartphone />}
-				text="Galaxy"
+        text="Galaxy"
+        rightIcon={<AiOutlineArrowRight />}  
 			/>
 			<SidebarContentItem
         leftIcon={<GiSmartphone />}
-				text="Pixel"
+        text="Pixel"
+        rightIcon={<AiOutlineArrowRight />}  
 			/>
 			<SidebarContentItem
         leftIcon={<GiSmartphone />}
-				text="Browse All"
+        text="Motorola"
+        rightIcon={<AiOutlineArrowRight />}  
+        divisible={false}
 			/>
 		</div>
 	);
@@ -382,38 +395,39 @@ const SidebarContentNotebooks = () => {
 			<SidebarContentItem
         leftIcon={<AiOutlineArrowLeft />}
 				text="Return"
+        rightIcon={<FaBackspace />}
 				moveToMenu={moveToPrimary}
-				reduce={true}
 			/>
 			<SidebarContentItem
-        leftIcon={<FaLaptop />}
+        leftIcon={<FaLaptopCode />}
 				text="Macbook"
-				reduce={true}
+        rightIcon={<AiOutlineArrowRight />}
 			/> 
 			<SidebarContentItem
-        leftIcon={<FaLaptop />}
+        leftIcon={<FaLaptopCode />}
 				text="Dell"
-				reduce={true}
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
-        leftIcon={<FaLaptop />}
+        leftIcon={<FaLaptopCode />}
 				text="Alienware"
-				reduce={true}
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
-        leftIcon={<FaLaptop />}
+        leftIcon={<FaLaptopCode />}
 				text="Acer"
-				reduce={true}
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
-        leftIcon={<FaLaptop />}
+        leftIcon={<FaLaptopCode />}
 				text="Lenovo"
-				reduce={true}
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
-        leftIcon={<FaLaptop />}
-				text="Browse all"
-				reduce={true}
+        leftIcon={<FaLaptopCode />}
+				text="Browse All"
+        rightIcon={<AiOutlineArrowRight />}
+        divisible={false}
 			/>
 		</div>
 	);
@@ -434,31 +448,39 @@ const SidebarContentTelevisions = () => {
 			<SidebarContentItem
         leftIcon={<AiOutlineArrowLeft />}
 				text="Return"
+        rightIcon={<FaBackspace />}
 				moveToMenu={moveToPrimary}
 			/>
 			<SidebarContentItem
         leftIcon={<FiMonitor />}
 				text="Sony"
+        rightIcon={<AiOutlineArrowRight />}
 			/> 
 			<SidebarContentItem
         leftIcon={<FiMonitor />}
 				text="Samsung"
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
         leftIcon={<FiMonitor />}
 				text="LG"
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
         leftIcon={<FiMonitor />}
 				text="Panasonic"
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
         leftIcon={<FiMonitor />}
 				text="Vizio"
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
         leftIcon={<FiMonitor />}
 				text="Browse All"
+        rightIcon={<AiOutlineArrowRight />}
+        divisible={false}
 			/>
 		</div>
 	);
@@ -479,27 +501,33 @@ const SidebarContentVideogames = () => {
 			<SidebarContentItem
 				leftIcon={<AiOutlineArrowLeft />}
 				text="Return"
+        rightIcon={<FaBackspace />}
 				moveToMenu={moveToPrimary}
 			/>
 			<SidebarContentItem
 				leftIcon={<GiGamepad />}
 				text="Playstation"
+        rightIcon={<AiOutlineArrowRight />}
 			/> 
 			<SidebarContentItem
 				leftIcon={<GiGamepad />}
 				text="Xbox"
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
 				leftIcon={<GiGamepad />}
 				text="Valve Vr"
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
 				leftIcon={<GiGamepad />}
-				text="Gamer Notebooks"
+				text="PC Gamer"
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
 				leftIcon={<GiGamepad />}
 				text="Browse All"
+        rightIcon={<AiOutlineArrowRight />}
         divisable={false}
 			/>
 		</div>
@@ -522,34 +550,42 @@ const SidebarContentMens = () => {
 				leftIcon={<AiOutlineArrowLeft />}
 				text="Return"
 				moveToMenu={moveToPrimary}
+        rightIcon={<FaBackspace />}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
+				leftIcon={<RiMenLine />}
 				text="T-Shrits"
+        rightIcon={<AiOutlineArrowRight />}
 			/> 
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
+				leftIcon={<RiMenLine />}
 				text="Pants"
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
+				leftIcon={<RiMenLine />}
 				text="Shoes"
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
+				leftIcon={<RiMenLine />}
 				text="Socks"
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
+				leftIcon={<RiMenLine />}
 				text="Underware"
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
+				leftIcon={<RiMenLine />}
 				text="Perfumes"
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
+				leftIcon={<RiMenLine />}
 				text="Browse All"
+        rightIcon={<AiOutlineArrowRight />}
         divisible={false}
 			/>
 		</div>
@@ -571,39 +607,48 @@ const SidebarContentWomans = () => {
 			<SidebarContentItem
 				leftIcon={<AiOutlineArrowLeft />}
 				text="Return"
+        rightIcon={<FaBackspace/>}
 				moveToMenu={moveToPrimary}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
+				leftIcon={<RiWomenLine />}
 				text="T-Shirts"
+        rightIcon={<AiOutlineArrowRight />}
 			/> 
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
+				leftIcon={<RiWomenLine />}
 				text="Dresses"
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
+				leftIcon={<RiWomenLine />}
 				text="Pants"
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
+				leftIcon={<RiWomenLine />}
 				text="Shoes"
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
+				leftIcon={<RiWomenLine />}
 				text="Socks"
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
+				leftIcon={<RiWomenLine />}
 				text="Underware"
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
+				leftIcon={<RiWomenLine />}
 				text="Perfumes"
+        rightIcon={<AiOutlineArrowRight />}
 			/>
 			<SidebarContentItem
-				leftIcon={<GiLoincloth />}
+				leftIcon={<RiWomenLine />}
 				text="Browse All"
+        rightIcon={<AiOutlineArrowRight />}
 				divisible={false}
 			/>
 		</div>
@@ -617,7 +662,7 @@ const SidebarContent = ({ contentClassName }) => {
 		<div 
 			ref={sidebarContentRef}
 			className={contentClassName}
-			style={{ height: height }}
+			style={{ height }}
 		>
 			<SidebarContentPrimary />
 			<SidebarContentSmartphones />
