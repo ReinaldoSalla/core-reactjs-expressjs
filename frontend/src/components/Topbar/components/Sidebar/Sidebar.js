@@ -35,22 +35,16 @@ woman's t-shirts, dresses, pants, shoes, underware, perfumes
 browse all
 */
 
-const LeftIcon = ({ leftIcon }) => (
-	<span className="sidebar-content-left-icon">
-		{leftIcon}
+const SidebarIcon = ({ icon }) => (
+	<span className="sidebar-content-icon">
+		{icon}
 	</span>
 );
 
-const MiddleText = ({ text }) => (
+const SidebarText = ({ text }) => (
 	<div className="sidebar-content-text">
 		{text}
 	</div>
-);
-
-const OptionalRightIcon = ({ rightIcon }) => (
-	rightIcon 
-		? <span className="sidebar-content-right-icon">{rightIcon}</span>  
-		: null
 );
 
 const DivisibleHr = ({ divisible }) => (
@@ -62,29 +56,21 @@ const SidebarContentItem = ({
 	text, 
 	rightIcon, 
 	moveToMenu,
-	reduce=false,
 	divisible=true 
-}) => {
-	const className = reduce
-		? "sidebar-content-item-reduced"
-		: "sidebar-content-item"
-
-	return (
-		<Fragment>
-			<a 
-				href="/#" 
-				className={className}
-				onClick={moveToMenu}
-			>
-				<LeftIcon leftIcon={leftIcon}/> 
-				<MiddleText text={text} />
-				<OptionalRightIcon rightIcon={rightIcon}/>
-			</a>
-			<DivisibleHr divisible={divisible} />
-		</Fragment>
-	);
-};
-
+}) => (
+	<Fragment>
+		<div 
+			href="/#" 
+			className="sidebar-content-item"
+			onClick={moveToMenu}
+		>
+			<SidebarIcon icon={leftIcon}/> 
+			<SidebarText text={text} />
+			<SidebarIcon icon={rightIcon}/>
+		</div>
+		<DivisibleHr divisible={divisible} />
+	</Fragment>
+);
 
 const reference = {
 	primary: "primary-off",
