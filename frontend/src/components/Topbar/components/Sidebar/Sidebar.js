@@ -10,9 +10,6 @@ import React, {
 import { FaBackspace, FaLaptopCode } from "react-icons/fa";
 import { 
 	GiSmartphone,
-	GiLoincloth,
-	GiHouse,
-	GiIsland,
   GiGamepad
 } from "react-icons/gi";
 import {  
