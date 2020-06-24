@@ -673,7 +673,7 @@ const SidebarContent = ({ contentClassName }) => {
 };
 
 const Sidebar = () => {
-	const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+	const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 	const iconClassName = isSidebarVisible 
 		? "sidebar-icon-on"
 		: "sidebar-icon-off";
