@@ -2,7 +2,7 @@
   --sidebar-width: 300px;
   --sidebar-item-width: 280px;
   --sidebar-content-item-size: 20px;
-  --sidebar-icons-offsetY: -10%;
+  --sidebar-icons-offsetY: 5%;
   --sidebar-offsetY: 56px;
   --sidebar-1500px-offsetX: -84px; 
   --sidebar-1400px-offsetX: -77px;
@@ -159,11 +159,13 @@
 	display: flex;
 	flex-direction: row;
   justify-content: space-between;
-	width: var(--sidebar-item-width);	
+  align-items: center;
+	width: var(--sidebar-item-width);
+  transition: background-color 250ms;	
 }
 
 .sidebar-content-item:hover {
-	background-color: gray;
+	background-color: rgb(87, 76, 76);
 	cursor: pointer;
 }
 
