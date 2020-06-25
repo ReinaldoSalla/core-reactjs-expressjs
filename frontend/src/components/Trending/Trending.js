@@ -79,7 +79,7 @@ const Trending = () => {
 			<Title title="Trending" />
 			<Loader isLoading={isLoading} products={products}/>
 		</div>
-	)
+	);
 };
 
 export default Trending;

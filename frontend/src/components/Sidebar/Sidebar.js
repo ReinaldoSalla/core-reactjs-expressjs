@@ -638,13 +638,13 @@ const SidebarContentWomans = () => {
 	);
 };
 
-const SidebarContent = ({ contentClassName }) => {
+const SidebarContent = ({ sidebarContentClassName }) => {
 	const { height, sidebarContentRef } = useContext(SidebarContentContext);
 
 	return (
 		<div 
 			ref={sidebarContentRef}
-			className={contentClassName}
+			className={sidebarContentClassName}
 			style={{ height }}
 		>
 			<SidebarContentPrimary />
@@ -658,25 +658,16 @@ const SidebarContent = ({ contentClassName }) => {
 	);
 };
 
-const Sidebar = () => {
-	const [isSidebarVisible, setIsSidebarVisible] = useState(false);
-	const iconClassName = isSidebarVisible 
-		? "sidebar-icon-on"
-		: "sidebar-icon-off";
-	const contentClassName = isSidebarVisible
-		? "sidebar-content-on" 
-		: "sidebar-content-off";
-
-	const toggleSidebar = () => setIsSidebarVisible(!isSidebarVisible);
+const Sidebar = ({ sidebarIconClassName, sidebarContentClassName, toggleSidebar }) => {
 
 	return (
 		<div className="sidebar-icon-content">
 			<BsLayoutTextSidebar
-				className={iconClassName}
+				className={sidebarIconClassName}
 				onClick={toggleSidebar}
 			/>
 			<SidebarContentProvider>
-				<SidebarContent contentClassName={contentClassName}/>
+				<SidebarContent sidebarContentClassName={sidebarContentClassName}/>
 			</SidebarContentProvider>
 		</div>
 	);
