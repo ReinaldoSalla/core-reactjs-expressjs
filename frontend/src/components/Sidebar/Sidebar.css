@@ -21,17 +21,16 @@
   --sidebar-300px-offsetX:   -2px;
 }
 
-.sidebar-icon-off {
+.sidebar-icon-off, .sidebar-icon-on {
+  /* margin: 0px 50px 0px 50px; */ /*ok, but input feels strange on mobile*/
+  margin: var(--topbar-menu-spacing);
 	color: white;
 	font-size: 40px;
 	transition-duration: 1000ms;
 }
 
 .sidebar-icon-on {
-	color: white;
-	font-size: 40px;
-	transition-duration: 1000ms;
-	transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .sidebar-icon-on:hover, .sidebar-icon-off:hover {
