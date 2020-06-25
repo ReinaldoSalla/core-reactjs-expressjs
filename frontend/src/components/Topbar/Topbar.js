@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "../Sidebar";
 import { FaShoppingCart } from "react-icons/fa";
 import { AiOutlineLogin } from "react-icons/ai";
 import "./Topbar.css";
@@ -18,9 +18,13 @@ const Cart = () => (
 	<FaShoppingCart className="cart-icon" />
 );
 
-const TopBar = () => (
+const TopBar = ({ sidebarIconClassName, sidebarContentClassName, toggleSidebar }) => (
 	<div className="topbar">
-		<Sidebar />
+		<Sidebar 
+      sidebarIconClassName={sidebarIconClassName}
+      sidebarContentClassName={sidebarContentClassName}
+      toggleSidebar={toggleSidebar}    
+    />
 		<CompanyLogo />
 		<InputSearch />
 		<Login />

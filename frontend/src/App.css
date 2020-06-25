@@ -14,3 +14,14 @@ a {
 	text-decoration: none;
   color: inherit;
 }
+
+.container-opacity-off {
+  transition: opacity 1000ms;
+  opacity: 1;
+}
+
+.container-opacity-on {
+  transition: opacity 1000ms;
+  opacity: 0.4;
+  pointer-events: none;
+}
