@@ -5,10 +5,12 @@ import { AiOutlineLogin } from "react-icons/ai";
 import "./Topbar.css";
 
 const CompanyLogo = () =>
-	<span className="company-logo">CompanyLogo</span>;
+	<span className="company-logo">Company</span>;
 
-const InputSearch = () => 
-	<input className="input-search" type="text" placeholder="e.g. T-Shirt Male"/>;
+const InputSearch = () => (
+	<input className="input-search" type="text" placeholder="e.g. T-Shirt Male"/>
+
+);
 
 const Login = () => (
 	<AiOutlineLogin className="login-icon" />
@@ -27,7 +29,7 @@ const TopBar = ({ sidebarIconClassName, sidebarContentClassName, toggleSidebar }
     />
 		<CompanyLogo />
 		<InputSearch />
-		<Login />
+		{/* <Login /> */}
 		<Cart />
 	</div>
 );
