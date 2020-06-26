@@ -2,6 +2,7 @@ import React, {
 	useEffect,
 	useState
 } from "react";
+import Spinner from "../Spinner";
 import "./Trending.css";
 import useVisibilityTimeOnce from "../../utils/useVisibility";
 
@@ -11,10 +12,10 @@ const Title = ({ title }) => (
 	</h1>
 );
 
-const Loading = () => (
-	<h1 className="loading">
-		Loading
-	</h1>
+const LoaderTrending = () => (
+	<div className="loader-trending">
+    <Spinner />
+  </div>
 );
 
 const Product = ({ name, price, img }) => {
@@ -56,7 +57,7 @@ const Products = ({ products }) => (
 
 const Loader = ({ isLoading, products }) => (
 	isLoading 
-		? <Loading /> 
+		? <LoaderTrending /> 
 		: <Products products={products}/>
 );
 
