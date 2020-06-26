@@ -8,10 +8,11 @@
   transform: translateY(50%);
 }
 
-.loading {
-	margin-top: 100px;
-	text-align: center;
+.loader-trending {
+	margin-top: 50px;
 	margin-bottom: 500px;
+  display: flex;
+  justify-content: center;
 }
 
 .products {
