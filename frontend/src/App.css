@@ -1,4 +1,3 @@
-/*
 body {
   background-color: rgba(240, 240, 240, 0.5);
   margin: 0;
@@ -16,6 +15,7 @@ a {
   color: inherit;
 }
 
+/*
 .container-opacity-off {
   transition: opacity 1000ms;
   opacity: 1;
@@ -27,3 +27,44 @@ a {
   pointer-events: none;
 }
 */
+
+.courosel-container {
+  display: flex;
+  justify-content: center;
+}
+
+.courosel {
+  padding: 10px;
+  margin: 10px;
+  transform: translateY(20%);
+  border: 5px solid red;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.first-img, .second-img, .third-img, .forth-img, .fifth-img {
+  position: absolute;
+  width: 100%;
+}
+
+.courosel-img {
+  width: 100%;
+  height: 400px;
+}
+
+.fifth-img-on {
+  transform: translateX(0%);
+}
+
+.fifth-img-off {
+  transform: translateX(0%);
+}
+
+.third-img {
+  z-index: 1;
+}
+
+/*transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),background 0.5s cubic-bezier(0.4, 0, 0.2, 1);*/

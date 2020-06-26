@@ -44,7 +44,7 @@ export default App;
 
 import React from "react";
 import js1 from "./assets/js1.png"
-import js2 from "./assets/js2.png";
+import js2 from "./assets/js2.jpg";
 import js3 from "./assets/js3.png";
 import js4 from "./assets/js4.jpg";
 import js5 from "./assets/js5.jpg";
@@ -73,15 +73,51 @@ const slides = [
 	}
 ];
 
+const activateFirstImg = (state) => {
+  return state;
+};
+
+const imgsSequenceClassNamesReference = [
+  "first-img-on",
+  "second-img-off",
+  "third-img-off",
+  "forth-img-off",
+  "fifth-img-off"
+];
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "activate-first-img":
+      return activateFirstImg(state);
+    default:
+      throw new Error(`Action type ${action.type} is not declared`);
+  }
+};
+
 
 const Courosel = () => {
   return (
     <div>
-      <img src={slides[0].imgUrl} alt=""/>
-      <img src={slides[1].imgUrl} alt=""/>
-      <img src={slides[2].imgUrl} alt=""/>
-      <img src={slides[3].imgUrl} alt=""/>
-      <img src={slides[4].imgUrl} alt=""/>
+      <button>go</button>
+      <div className="courosel-container">
+        <div className="courosel">
+          <div className="first-img">
+            <img className="courosel-img" src={slides[0].imgUrl} alt=""/>
+          </div>
+          <div className="second-img">
+            <img className="courosel-img" src={slides[1].imgUrl} alt=""/>
+          </div>
+          <div className="third-img">
+            <img className="courosel-img" src={slides[2].imgUrl} alt=""/>
+          </div>
+          <div className="forth-img">
+            <img className="courosel-img" src={slides[3].imgUrl} alt=""/>
+          </div>
+          <div className="fifth-img">
+            <img className="courosel-img" src={slides[4].imgUrl} alt=""/>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
