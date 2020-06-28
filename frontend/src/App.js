@@ -63,12 +63,18 @@ const reference = {
   secondImgClassName: "second-img-off",
   thirdImgClassName: "third-img-off",
   forthImgClassName: "forth-img-off",
-  fifthImgClassName: "fifth-img-off"
+  fifthImgClassName: "fifth-img-off",
+  firstInputClassName: "first-input-off",
+  secondInputClassName: "second-input-off",
+  thirdInputClassName: "third-input-off",
+  forthInputClassName: 'forth-input-off',
+  fifthInputClassName: 'fifth-input-off'
 };
 
 const initialState = {
   ...reference,
   firstImgClassName: "first-img-off",
+  firstInputClassName: 'first-input-off',
   index: 0
 };
 
@@ -84,31 +90,36 @@ const incrementIndex = (state) => {
 const moveToFirstIndex = (state) => ({
   ...state,
   ...reference,
-  firstImgClassName: "first-img-on"
+  firstImgClassName: "first-img-on",
+  firstInputClassName: "first-input-on"
 });
 
 const moveToSecondIndex = (state) => ({
   ...state,
   ...reference,
-  secondImgClassName: "second-img-on"
+  secondImgClassName: "second-img-on",
+  secondInputClassName: "second-input-on"
 });
 
 const moveToThirdIndex = (state) => ({
   ...state,
   ...reference,
-  thirdImgClassName: "third-img-on"
+  thirdImgClassName: "third-img-on",
+  thirdInputClassName: "third-input-on"
 });
 
 const moveToForthIndex = (state) => ({
   ...state,
   ...reference,
-  forthImgClassName: "forth-img-on"
+  forthImgClassName: "forth-img-on",
+  forthInputClassName: 'forth-input-on'
 });
 
 const moveToFifthIndex = (state) => ({
   ...state,
   ...reference,
-  fifthImgClassName: "fifth-img-on"
+  fifthImgClassName: "fifth-img-on",
+  fifthInputClassName: 'first-input-on'
 });
 
 const reducer = (state, action) => {
@@ -164,7 +175,13 @@ const Courosel = () => {
 
   return (
     <Fragment>
-      <button>go</button>
+      <div className="courosel-inputs">
+        <div className={state.firstInputClassName}/>
+        <div className={state.secondInputClassName}/>
+        <div className={state.thirdInputClassName}/>
+        <div className={state.forthInputClassName}/>
+        <div className={state.fifthInputClassName}/>
+      </div>
       <div className="courosel-container">
         <div className="courosel">
           <div className={state.firstImgClassName}>
